@@ -5,6 +5,7 @@ export const appSlice = createSlice({
     user: {
       name: "khoa",
     },
+    showMovieInfoModal: false,
   },
   reducers: {
     login: (state, action) => {
@@ -15,9 +16,13 @@ export const appSlice = createSlice({
     logout: (state) => {
       state.user = null;
     },
+    setShowMovieInfoModal: (state, payload) => {
+      console.log(payload);
+      state.showMovieInfoModal = payload.payload;
+    },
   },
 });
 
-export const { login, logout } = appSlice.actions;
+export const { login, logout, setShowMovieInfoModal } = appSlice.actions;
 //export const selectUser = (state) => state.app.user;
 export default appSlice.reducer;

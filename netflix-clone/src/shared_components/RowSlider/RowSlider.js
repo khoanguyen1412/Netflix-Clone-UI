@@ -9,6 +9,8 @@ import { FaPlay } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { FiChevronDown } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import { setShowMovieInfoModal } from "../../app/appSlice.js";
 
 RowSlider.propTypes = {};
 const data = [
@@ -36,7 +38,11 @@ function RowSlider({ title, fetchUrl, isLargeRow = false }) {
   const [movies, setMovies] = useState([]);
   const base_url = "https://image.tmdb.org/t/p/original/";
   const [sliderData, setSliderData] = useState([]);
-  const limit = 5;
+  const dispatch = useDispatch();
+  function openMovieInfoModal() {
+    dispatch(setShowMovieInfoModal(true));
+  }
+
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
@@ -45,7 +51,6 @@ function RowSlider({ title, fetchUrl, isLargeRow = false }) {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
       setMovies(request.data.results);
-      console.log(request.data.results.length);
       var slide1 = [];
       for (let i = 0; i < 6; i++) {
         slide1.push(request.data.results[i]);
@@ -61,7 +66,6 @@ function RowSlider({ title, fetchUrl, isLargeRow = false }) {
 
       var slides = [slide1, slide2, slide3];
       setSliderData(slides);
-      console.log(sliderData);
       return request;
     }
 
@@ -79,7 +83,6 @@ function RowSlider({ title, fetchUrl, isLargeRow = false }) {
           indicators={false}
         >
           {sliderData.map((slide) => {
-            console.log(slide);
             return (
               <Carousel.Item>
                 <Row className="slide-container">
@@ -110,7 +113,10 @@ function RowSlider({ title, fetchUrl, isLargeRow = false }) {
                             <div className="movie-btn dislike-btn">
                               <BiDislike className="icon-btn icon-dislike" />
                             </div>
-                            <div className="movie-btn show-info-btn">
+                            <div
+                              className="movie-btn show-info-btn"
+                              onClick={openMovieInfoModal}
+                            >
                               <FiChevronDown className="icon-btn icon-show" />
                             </div>
                           </div>
