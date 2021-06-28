@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import "./Banner.scss";
 import axios from "../../api/axios";
 import requests from "../../api/Requests";
+import { FaPlay } from "react-icons/fa";
+import { BiInfoCircle } from "react-icons/bi";
 
 function Banner(props) {
   const [bannerMovie, setBannerMovie] = useState({});
@@ -20,8 +22,6 @@ function Banner(props) {
 
     fetchData();
   }, []);
-
-  console.log(bannerMovie);
 
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
@@ -41,12 +41,19 @@ function Banner(props) {
             bannerMovie?.name ||
             bannerMovie?.original_name}
         </h1>
-        <div className="banner__buttons">
-          <button className="banner__button">Play</button>
-          <button className="banner__button">My List</button>
-        </div>
+
         <div className="banner__description">
-          {truncate(bannerMovie?.overview, 300)}
+          {truncate(bannerMovie?.overview, 150)}
+        </div>
+        <div className="banner__buttons">
+          <button className="banner__button play-button">
+            <FaPlay className="icon-play icon-button" />
+            Play
+          </button>
+          <button className="banner__button info-button">
+            <BiInfoCircle className="icon-info icon-button" />
+            My List
+          </button>
         </div>
       </div>
       <div className="banner--fadeBottom"></div>

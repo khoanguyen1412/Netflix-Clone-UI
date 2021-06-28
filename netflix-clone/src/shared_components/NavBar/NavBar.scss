@@ -1,34 +1,151 @@
 .nav__bar {
     position: fixed;
     top: 0;
-    height: 30px;
+    height: 4rem;
     z-index: 1;
-    padding: 20px;
     width: 100%;
-
+    display: flex;
+    justify-content: center;
     /*animation*/
     transition-timing-function: ease-in;
     transition: all 0.5s;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0));
     &.is_shown {
-        background-color: #0b0b0b;
+        background-color: #0e0e0e;
     }
     .nav__contents {
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        .nav__logo {
-            position: fixed;
-            left: 0;
-            top: 15px;
-            width: 80px;
-            padding-left: 20px;
-            cursor: pointer;
-            object-fit: contain;
+        width: 100%;
+        height: 100%;
+        margin: 0rem 2rem;
+        .nav__leftContents {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            .nav__logo {
+                //position: fixed;
+                //left: 0;
+                //top: 15px;
+                width: 8rem;
+                cursor: pointer;
+                object-fit: contain;
+                margin-right: 2rem;
+            }
+            .dropdown {
+                display: none;
+                .dropdown-toggle {
+                    margin-right: 1rem;
+                    background-color: transparent;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 1rem;
+                    border: none;
+                    cursor: pointer;
+                    display: flex;
+                    outline: none;
+                    align-items: center;
+
+                    .icon-arrow {
+                        margin-left: 0.5rem;
+                    }
+                }
+                .dropdown-menu {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 0.5rem;
+                    .dropdown-item {
+                        text-decoration: none;
+                        color: white;
+                        padding: 1rem 3rem;
+                        text-align: center;
+                        transition: all 0.3s;
+                        background-color: rgba(0, 0, 0, 0.7);
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.6);
+                        }
+                    }
+                }
+            }
+            .nav_link {
+                text-decoration: none;
+                font-size: 1rem;
+                color: white;
+                margin-right: 1rem;
+                &.active {
+                    font-weight: bold;
+                }
+            }
+
+            @media (max-width: 1100px) {
+                .dropdown {
+                    display: block;
+                }
+                .nav_link {
+                    display: none;
+                }
+            }
         }
-        .nav__avatar {
-            position: fixed;
-            right: 20px;
-            width: 30px;
-            cursor: pointer;
+
+        .nav__rightContents {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            .search-bar {
+                display: flex;
+                align-items: center;
+                margin-right: 1rem;
+                transform: scaleX(0);
+                //width: 0;
+                transition: all 0.5s;
+                .input-icon {
+                    color: white;
+                    margin-right: -1.5rem;
+                    z-index: 1;
+                    cursor: pointer;
+                }
+                input {
+                    height: 1.5rem;
+                    width: 13rem;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border: 1px solid white;
+                    color: white;
+                    padding-left: 2rem;
+                }
+                &.show {
+                    transform: scaleX(1);
+                    transform-origin: right center;
+
+                    //width: auto;
+                }
+                &.hidden {
+                    transform: scaleX(0);
+                    transform-origin: right center;
+                    //width: 0;
+                }
+            }
+            .nav__icon {
+                color: white;
+                width: 1.3rem;
+                height: 1.3rem;
+                margin-right: 1rem;
+                cursor: pointer;
+            }
+            .icon-search {
+                transition: all 1s;
+
+                &.hidden {
+                    display: none;
+                }
+            }
+            .icon-noti {
+            }
+            .nav__avatar {
+                width: 2rem;
+                height: 2rem;
+                cursor: pointer;
+            }
         }
     }
 }
