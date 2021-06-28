@@ -12,8 +12,16 @@
             max-height: 100px;
             object-fit: contain;
             margin-right: 10px;
+            transition: all 0.3s;
+
             &.row__posterLarge {
                 max-height: 250px;
+            }
+            &:hover {
+                transform: scale(1.5);
+            }
+            &:first-child {
+                transform-origin: left center;
             }
         }
         &::-webkit-scrollbar {
