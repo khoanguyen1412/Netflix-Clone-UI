@@ -4,14 +4,11 @@ import "./RowSlider.scss";
 import Carousel from "react-bootstrap/Carousel";
 import axios from "../../api/axios";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { FaPlay } from "react-icons/fa";
-import { AiOutlineCheck } from "react-icons/ai";
-import { BiLike, BiDislike } from "react-icons/bi";
-import { FiChevronDown } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { setShowMovieInfoModal } from "../../app/appSlice.js";
+import MovieItem from "../MovieItem/MovieItem.js";
 
+const API_KEY = "f81980ff410e46f422d64ddf3a56dddd";
 RowSlider.propTypes = {};
 const data = [
   {
@@ -33,7 +30,14 @@ const data = [
     description: "Description Here",
   },
 ];
-function RowSlider({ title, fetchUrl, isLargeRow = false }) {
+function RowSlider({
+  title,
+  fetchUrl,
+  isLargeRow = false,
+  isSpecial = false,
+  isTV = false,
+  genresId = null,
+}) {
   const [index, setIndex] = useState(0);
   const [movies, setMovies] = useState([]);
   const base_url = "https://image.tmdb.org/t/p/original/";
@@ -49,7 +53,21 @@ function RowSlider({ title, fetchUrl, isLargeRow = false }) {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(fetchUrl);
+      var request = null;
+      if (isSpecial) {
+        if (isTV) {
+          request = await axios.get(
+            `/discover/tv?api_key=${API_KEY}&with_genres=${genresId}`
+          );
+        } else {
+          request = await axios.get(
+            `/discover/movie?api_key=${API_KEY}&with_genres=${genresId}`
+          );
+        }
+      } else {
+        request = await axios.get(fetchUrl);
+      }
+
       setMovies(request.data.results);
       var slide1 = [];
       for (let i = 0; i < 6; i++) {
@@ -87,54 +105,7 @@ function RowSlider({ title, fetchUrl, isLargeRow = false }) {
               <Carousel.Item>
                 <Row className="slide-container">
                   {slide.map((movie) => {
-                    return (
-                      <Col className="movie-item">
-                        <img
-                          alt=""
-                          style={{}}
-                          src={`${base_url}${
-                            isLargeRow ? movie.poster_path : movie.backdrop_path
-                          }`}
-                        />
-                        <div className="movie-info">
-                          <div className="movie-name">
-                            {movie.name || movie.title || movie.original_title}
-                          </div>
-                          <div className="actions-group">
-                            <div className="movie-btn play-btn">
-                              <FaPlay className="icon-btn icon-play" />
-                            </div>
-                            <div className="movie-btn mark-btn">
-                              <AiOutlineCheck className="icon-btn icon-check" />
-                            </div>
-                            <div className="movie-btn like-btn">
-                              <BiLike className="icon-btn icon-like" />
-                            </div>
-                            <div className="movie-btn dislike-btn">
-                              <BiDislike className="icon-btn icon-dislike" />
-                            </div>
-                            <div
-                              className="movie-btn show-info-btn"
-                              onClick={openMovieInfoModal}
-                            >
-                              <FiChevronDown className="icon-btn icon-show" />
-                            </div>
-                          </div>
-                          <div className="detail-info">
-                            <div className="age-limit">13+</div>
-                            <div className="time">2h 13m</div>
-                            <div className="quality">HD</div>
-                          </div>
-                          <div className="genres-group">
-                            <div className="genre">Supperhero</div>
-                            <div className="divider"></div>
-                            <div className="genre">Exciting</div>
-                            <div className="divider"></div>
-                            <div className="genre">Adult</div>
-                          </div>
-                        </div>
-                      </Col>
-                    );
+                    return <MovieItem movie={movie} isLargeRow={isLargeRow} />;
                   })}
                 </Row>
               </Carousel.Item>

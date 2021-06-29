@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import "./NavBar.scss";
 import { useDispatch } from "react-redux";
 import { logout } from "../../app/appSlice";
@@ -7,11 +6,14 @@ import { BsFillBellFill } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import { AiFillCaretDown } from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
+import { useHistory, useLocation } from "react-router-dom";
 
 function NavBar(props) {
   const [showNavbar, setShowNavbar] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useHistory();
 
   function logoutApp() {
     dispatch(logout(false));
@@ -52,13 +54,26 @@ function NavBar(props) {
               <Dropdown.Item href="#/action-4">My List</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <a href="/" className="nav_link active">
+
+          <div
+            onClick={() => {
+              history.push("/");
+            }}
+            className={`nav_link ${location.pathname === "/" ? "active" : ""}`}
+          >
             Home
-          </a>
-          <a href="/" className="nav_link">
+          </div>
+          <div
+            onClick={() => {
+              history.push("/tvshows");
+            }}
+            className={`nav_link ${
+              location.pathname === "/tvshows" ? "active" : ""
+            }`}
+          >
             TV Shows
-          </a>
-          <a href="/" className="nav_link">
+          </div>
+          <a href="/tvshows" className="nav_link">
             Movies
           </a>
           <a href="/" className="nav_link">{`New & Popular`}</a>

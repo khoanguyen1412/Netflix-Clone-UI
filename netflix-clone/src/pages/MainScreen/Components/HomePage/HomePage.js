@@ -1,17 +1,14 @@
-import React, { useState } from "react";
-import NavBar from "../../shared_components/NavBar/NavBar";
-import Banner from "../../shared_components/Banner/Banner";
-import "./HomeScreen.scss";
-import requests from "../../api/Requests";
-import RowSlider from "../../shared_components/RowSlider/RowSlider.js";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+import React from "react";
+import "./HomePage.scss";
+import requests from "../../../../api/Requests";
+import RowSlider from "../../../../shared_components/RowSlider/RowSlider.js";
 
-function HomeScreen(props) {
+import Banner from "../../../../shared_components/Banner/Banner";
+HomePage.propTypes = {};
+
+function HomePage(props) {
   return (
-    <div className="home-screen">
-      <NavBar />
-
+    <div className="homePage">
       <Banner />
       <RowSlider title="Trending Now" fetchUrl={requests.fetchTrending} />
       <RowSlider
@@ -34,4 +31,4 @@ function HomeScreen(props) {
   );
 }
 
-export default HomeScreen;
+export default HomePage;
