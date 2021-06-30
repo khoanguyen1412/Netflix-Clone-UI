@@ -8,18 +8,27 @@ import ReactPlayer from "react-player";
 import "./VideoModal.scss";
 import screenfull from "screenfull";
 import YouTubePlayer from "react-player/youtube";
-function VideoModal({ showMovieModal, onClose }) {
+import { useDispatch, useSelector } from "react-redux";
+import { setShowVideoModal } from "../../app/appSlice.js";
+function VideoModal({
+  isGlobal = false,
+  showMovieModal = null,
+  onClose = null,
+}) {
+  const dispatch = useDispatch();
+  const showGlobal = useSelector((state) => state.app.showVideoModal);
   const opts = {
-    //height: "390",
-    //width: "640",
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
       showinfo: 0,
       rel: 0,
     },
   };
   function handleClose() {
+    if (isGlobal) {
+      dispatch(setShowVideoModal(false));
+      return;
+    }
     if (onClose) {
       onClose();
     }
@@ -28,20 +37,20 @@ function VideoModal({ showMovieModal, onClose }) {
     <Modal
       className="video-modal"
       size="lg"
-      show={showMovieModal}
+      show={isGlobal ? showGlobal : showMovieModal}
       onHide={handleClose}
+      style={{ backgroundColor: !isGlobal ? "rgba(0,0,0,0.5)" : "" }}
     >
       <Modal.Body>
-        <YouTube videoId="QwievZ1Tx-8" opts={opts} />
-        {/* <iframe
-          width="560"
-          height="315"
+        {/* <YouTube videoId="QwievZ1Tx-8" opts={opts} /> */}
+        <iframe
+          className="frame"
           src="https://www.youtube.com/embed/QwievZ1Tx-8?autoplay=1&fullscreen=1"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        ></iframe> */}
+        ></iframe>
         {/* <YouTubePlayer
           url={`https://www.youtube.com/watch?v=QwievZ1Tx-8&t=1s`}
           controls

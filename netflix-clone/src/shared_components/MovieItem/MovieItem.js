@@ -6,7 +6,11 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { FiChevronDown } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { setShowMovieInfoModal } from "../../app/appSlice.js";
+import {
+  setIsShowMovieInfo,
+  setShowMovieInfoModal,
+  setShowVideoModal,
+} from "../../app/appSlice.js";
 
 MovieItem.propTypes = {};
 
@@ -18,6 +22,11 @@ function MovieItem({ movie, isLargeRow }) {
   const [dislike, setDislike] = useState(false);
 
   function openMovieInfoModal() {
+    if (movie.release_date) {
+      dispatch(setIsShowMovieInfo(true));
+    } else {
+      dispatch(setIsShowMovieInfo(false));
+    }
     dispatch(setShowMovieInfoModal(true));
   }
 
@@ -29,6 +38,10 @@ function MovieItem({ movie, isLargeRow }) {
   function handleDislike() {
     setDislike(true);
     setLike(false);
+  }
+
+  function openVideo() {
+    dispatch(setShowVideoModal(true));
   }
 
   return (
@@ -49,7 +62,7 @@ function MovieItem({ movie, isLargeRow }) {
           {movie.name || movie.title || movie.original_title}
         </div>
         <div className="actions-group">
-          <div className={`movie-btn play-btn `}>
+          <div className={`movie-btn play-btn `} onClick={openVideo}>
             <FaPlay className="icon-btn icon-play" />
           </div>
           <div

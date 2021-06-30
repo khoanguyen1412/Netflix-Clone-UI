@@ -15,7 +15,7 @@ function MainScreen(props) {
     <div className="home-screen">
       <NavBar />
       {/* <HomePage /> */}
-      <TVShowPage />
+      {/* <TVShowPage /> */}
     </div>
   );
 }

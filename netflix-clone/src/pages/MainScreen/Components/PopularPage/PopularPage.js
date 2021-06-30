@@ -3,12 +3,12 @@ import GridMovies from "../../../../shared_components/GridMovies/GridMovies.js";
 import { ButtonGroup, Button } from "react-bootstrap";
 import "./PopularPage.scss";
 
-function PopularPage(props) {
+function PopularPage({ title = "New & Popular on Netflix" }) {
   const [mode, setMode] = useState(1); //1: movies, 2: tv shows
   return (
     <div className="popularPage">
       <div className="header">
-        <h3 className="title">New & Popular on Netflix </h3>
+        <h3 className="title">{title}</h3>
         <ButtonGroup aria-label="Basic example">
           <Button
             className={`${mode === 1 ? "active" : ""}`}

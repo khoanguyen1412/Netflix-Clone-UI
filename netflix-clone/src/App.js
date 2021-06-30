@@ -10,10 +10,11 @@ import HomePage from "./pages/MainScreen/Components/HomePage/HomePage.js";
 import TVShowPage from "./pages/MainScreen/Components/TVShowPage/TVShowPage.js";
 import MoviePage from "./pages/MainScreen/Components/MoviePage/MoviePage.js";
 import PopularPage from "./pages/MainScreen/Components/PopularPage/PopularPage.js";
+import VideoModal from "./shared_components/VideoModal/VideoModal.js";
 
 function App() {
   const user = useSelector((state) => state.app.user);
-
+  const [showVideo, setShowVideo] = useState(false);
   return (
     <div className="app">
       <Router>
@@ -34,9 +35,10 @@ function App() {
                 <PopularPage />
               </Route>
               <Route path="/mylist">
-                <MoviePage />
+                <PopularPage title={"My List"} />
               </Route>
             </Switch>
+            <VideoModal isGlobal={true} />
           </>
         ) : (
           <LoginScreen />

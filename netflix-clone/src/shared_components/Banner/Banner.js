@@ -5,10 +5,14 @@ import axios from "../../api/axios";
 import requests from "../../api/Requests";
 import { FaPlay } from "react-icons/fa";
 import { BiInfoCircle } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { setShowVideoModal } from "../../app/appSlice.js";
+import { useHistory } from "react-router-dom";
 
 function Banner(props) {
   const [bannerMovie, setBannerMovie] = useState({});
-
+  const dispatch = useDispatch();
+  const history = useHistory();
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.fetchNetflixOriginals);
@@ -26,6 +30,15 @@ function Banner(props) {
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
+
+  function handleOpenVideo() {
+    dispatch(setShowVideoModal(true));
+  }
+
+  function openMyList() {
+    history.push("/mylist");
+  }
+
   return (
     <header
       className="banner"
@@ -46,11 +59,14 @@ function Banner(props) {
           {truncate(bannerMovie?.overview, 150)}
         </div>
         <div className="banner__buttons">
-          <button className="banner__button play-button">
+          <button
+            className="banner__button play-button"
+            onClick={handleOpenVideo}
+          >
             <FaPlay className="icon-play icon-button" />
             Play
           </button>
-          <button className="banner__button info-button">
+          <button className="banner__button info-button" onClick={openMyList}>
             <BiInfoCircle className="icon-info icon-button" />
             My List
           </button>

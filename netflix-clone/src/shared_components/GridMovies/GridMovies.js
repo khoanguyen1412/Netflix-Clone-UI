@@ -9,7 +9,6 @@ const API_KEY = "f81980ff410e46f422d64ddf3a56dddd";
 function GridMovies({ mode = 1 }) {
   const [listMovies, setListMoves] = useState([]);
   const [listTVs, setListTVs] = useState([]);
-  // /popular?api_key=f81980ff410e46f422d64ddf3a56dddd&language=en-US&page=3
   useEffect(() => {
     //get movies
     function fetchDataMovies() {
@@ -69,7 +68,12 @@ function GridMovies({ mode = 1 }) {
     fetchDataTVs();
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(listMovies);
+  }, [listMovies]);
+  useEffect(() => {
+    console.log(listTVs);
+  }, [listTVs]);
   return (
     <Row className="grid-movies-container">
       {mode === 1 &&

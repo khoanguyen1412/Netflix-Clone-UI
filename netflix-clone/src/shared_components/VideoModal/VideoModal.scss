@@ -1,24 +1,17 @@
 .video-modal {
     .modal-content {
-        width: fit-content;
+        //width: fit-content;
         margin: 0 auto;
         background-color: #181818;
         .modal-body {
             display: flex;
             justify-content: center;
             background-color: #181818;
+            padding: 0;
+            .frame {
+                width: 100%;
+                height: 25rem;
+            }
         }
     }
-}
-.ytp-gradient-top {
-    display: none !important;
-}
-.ytp-chrome-top,
-.ytp-show-cards-title {
-    display: none !important;
-}
-.ytp-pause-overlay,
-.ytp-scroll-min {
-    display: none !important;
-    visibility: hidden;
 }
