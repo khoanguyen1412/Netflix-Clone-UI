@@ -73,13 +73,36 @@ function NavBar(props) {
           >
             TV Shows
           </div>
-          <a href="/tvshows" className="nav_link">
+          <div
+            onClick={() => {
+              history.push("/movies");
+            }}
+            className={`nav_link ${
+              location.pathname === "/movies" ? "active" : ""
+            }`}
+          >
             Movies
-          </a>
-          <a href="/" className="nav_link">{`New & Popular`}</a>
-          <a href="/" className="nav_link">
+          </div>
+          <div
+            onClick={() => {
+              history.push("/newpopular");
+            }}
+            className={`nav_link ${
+              location.pathname === "/newpopular" ? "active" : ""
+            }`}
+          >
+            New & Popular
+          </div>
+          <div
+            onClick={() => {
+              history.push("/mylist");
+            }}
+            className={`nav_link ${
+              location.pathname === "/mylist" ? "active" : ""
+            }`}
+          >
             My List
-          </a>
+          </div>
         </div>
         <div className="nav__rightContents">
           <div className={`search-bar ${openSearch ? "show" : "hidden"}`}>

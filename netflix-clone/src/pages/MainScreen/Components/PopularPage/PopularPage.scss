@@ -1,0 +1,23 @@
+.popularPage {
+    padding-top: 5rem;
+    color: white;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        .title {
+            margin-left: 2rem;
+        }
+        .btn-group {
+            margin-right: 2rem;
+            button {
+                background-color: transparent;
+                &.active {
+                    background-color: #e50914;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

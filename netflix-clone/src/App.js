@@ -8,6 +8,8 @@ import MovieInfoModal from "./shared_components/MovieInfoModal/MovieInfoModal.js
 import NavBar from "./shared_components/NavBar/NavBar.js";
 import HomePage from "./pages/MainScreen/Components/HomePage/HomePage.js";
 import TVShowPage from "./pages/MainScreen/Components/TVShowPage/TVShowPage.js";
+import MoviePage from "./pages/MainScreen/Components/MoviePage/MoviePage.js";
+import PopularPage from "./pages/MainScreen/Components/PopularPage/PopularPage.js";
 
 function App() {
   const user = useSelector((state) => state.app.user);
@@ -24,6 +26,15 @@ function App() {
               </Route>
               <Route path="/tvshows">
                 <TVShowPage />
+              </Route>
+              <Route path="/movies">
+                <MoviePage />
+              </Route>
+              <Route path="/newpopular">
+                <PopularPage />
+              </Route>
+              <Route path="/mylist">
+                <MoviePage />
               </Route>
             </Switch>
           </>

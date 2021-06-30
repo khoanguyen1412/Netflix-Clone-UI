@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Col } from "react-bootstrap";
-import "./MovieItem.scss";
+import "./MovieComponent.scss";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BiLike, BiDislike } from "react-icons/bi";
@@ -8,31 +8,15 @@ import { FiChevronDown } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { setShowMovieInfoModal } from "../../app/appSlice.js";
 
-MovieItem.propTypes = {};
-
-function MovieItem({ movie, isLargeRow }) {
+function MovieComponent({ movie, isLargeRow }) {
   const base_url = "https://image.tmdb.org/t/p/original/";
   const dispatch = useDispatch();
-  const [mark, setMark] = useState(false);
-  const [like, setLike] = useState(false);
-  const [dislike, setDislike] = useState(false);
-
   function openMovieInfoModal() {
     dispatch(setShowMovieInfoModal(true));
   }
 
-  function handleLike() {
-    setLike(true);
-    setDislike(false);
-  }
-
-  function handleDislike() {
-    setDislike(true);
-    setLike(false);
-  }
-
   return (
-    <Col className="movie-item">
+    <Col className="movie-component">
       <img
         alt=""
         style={{}}
@@ -49,25 +33,16 @@ function MovieItem({ movie, isLargeRow }) {
           {movie.name || movie.title || movie.original_title}
         </div>
         <div className="actions-group">
-          <div className={`movie-btn play-btn `}>
+          <div className="movie-btn play-btn">
             <FaPlay className="icon-btn icon-play" />
           </div>
-          <div
-            className={`movie-btn mark-btn ${mark ? "active" : ""}`}
-            onClick={() => setMark(!mark)}
-          >
+          <div className="movie-btn mark-btn">
             <AiOutlineCheck className="icon-btn icon-check" />
           </div>
-          <div
-            className={`movie-btn like-btn ${like ? "active" : ""}`}
-            onClick={handleLike}
-          >
+          <div className="movie-btn like-btn">
             <BiLike className="icon-btn icon-like" />
           </div>
-          <div
-            className={`movie-btn dislike-btn ${dislike ? "active" : ""}`}
-            onClick={handleDislike}
-          >
+          <div className="movie-btn dislike-btn">
             <BiDislike className="icon-btn icon-dislike" />
           </div>
           <div className="movie-btn show-info-btn" onClick={openMovieInfoModal}>
@@ -91,4 +66,4 @@ function MovieItem({ movie, isLargeRow }) {
   );
 }
 
-export default MovieItem;
+export default MovieComponent;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./MovieInfoModal.scss";
 import { Modal } from "react-bootstrap";
@@ -10,11 +10,12 @@ import { FaPlay } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BiLike, BiDislike, BiPlus } from "react-icons/bi";
 import { FiChevronDown } from "react-icons/fi";
-
+import VideoModal from "../VideoModal/VideoModal.js";
 MovieInfoModal.propTypes = {};
 
 function MovieInfoModal(props) {
   const dispatch = useDispatch();
+  const [showVideo, setShowVideo] = useState(false);
   const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const showMovieInfoModal = useSelector(
     (state) => state.app.showMovieInfoModal
@@ -30,7 +31,11 @@ function MovieInfoModal(props) {
       onHide={handleClose}
     >
       <Modal.Body>
-        <div className="btn-close" onClick={handleClose}>
+        <div
+          className="btn-close"
+          onClick={handleClose}
+          //onClick={() => setShowVideo(true)}
+        >
           <RiCloseCircleFill className="icon-close" />
         </div>
         <img
@@ -42,7 +47,10 @@ function MovieInfoModal(props) {
         <div className="banner-content">
           <h2 className="movie-name">AQUAMAN</h2>
           <div className="action-group">
-            <button className="banner__button play-button">
+            <button
+              className="banner__button play-button"
+              onClick={() => setShowVideo(true)}
+            >
               <FaPlay className="icon-play icon-button" />
               Play
             </button>
@@ -173,6 +181,11 @@ function MovieInfoModal(props) {
             <span className="">Recommended for ages 13 and up</span>
           </div>
         </div>
+
+        <VideoModal
+          showMovieModal={showVideo}
+          onClose={() => setShowVideo(false)}
+        />
       </Modal.Body>
     </Modal>
   );
