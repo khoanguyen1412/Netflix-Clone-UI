@@ -1,0 +1,172 @@
+.MuiPaper-root.MuiDrawer-paper {
+    padding: 0rem;
+    background-color: #131111;
+    width: 16rem;
+    .drawer-header {
+        padding: 1.5rem;
+        padding-bottom: 0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        .setting-tab {
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+
+            border-radius: 50rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            cursor: pointer;
+            .icon-user {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+            &.active {
+                width: 1.7rem;
+                height: 1.7rem;
+                padding: 0.2rem;
+                background-color: white;
+                color: #131111;
+                .icon-user {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+        }
+        .noti-tab {
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50rem;
+            .icon-bell {
+                width: inherit;
+                height: inherit;
+            }
+            &.active {
+                background-color: white;
+                color: #131111;
+                width: 1.7rem;
+                height: 1.7rem;
+                padding: 0.2rem;
+                .icon-user {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+        }
+    }
+    input {
+        margin: 1.5rem;
+        margin-bottom: 0;
+        background-color: #040404 !important;
+        border-radius: 6px;
+        color: white;
+        width: auto;
+        &:focus,
+        &:active {
+            border-color: white;
+            outline: none;
+        }
+    }
+    .drawer-item {
+        color: white;
+        padding: 0.5rem 1.5rem;
+        cursor: pointer;
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: rgba(gray, 0.6);
+        }
+        &.profile-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .content-left {
+                display: flex;
+                align-items: center;
+                img {
+                    width: 1.7rem;
+                    height: 1.7rem;
+                    border-radius: 5px;
+                    margin-right: 0.5rem;
+                }
+            }
+            .icon-lock {
+                width: 1.2rem;
+                height: 1.2rem;
+            }
+        }
+        &.action-item {
+            display: flex;
+            align-items: center;
+            .icon-action {
+                margin-right: 0.7rem;
+            }
+        }
+    }
+
+    .list-noti {
+        //max-height: 20rem;
+        margin-top: 1.5rem;
+        overflow-y: auto;
+        .noti-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+            .status {
+                background-color: rgba(#e50914, 0.7);
+                height: 0.5rem;
+                width: 0.5rem;
+                border-radius: 50rem;
+                margin-right: 0.5rem;
+            }
+            img {
+                width: 7rem;
+                height: 3.5rem;
+                display: none;
+            }
+            .detail-group {
+                display: flex;
+                flex-direction: column;
+                width: 8rem;
+                flex-grow: 1;
+                padding-left: 1rem;
+                color: white;
+                .message {
+                    //width: 12rem;
+                }
+                .time {
+                    font-weight: bold;
+                    font-size: 0.8rem;
+                    color: gray;
+                }
+            }
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(gray, 0.1);
+            }
+            &.new {
+                background-color: rgba(gray, 0.3);
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgba(gray, 0.2);
+                }
+            }
+        }
+        .empty-noti {
+            color: white;
+            display: flex;
+            justify-content: center;
+            font-style: italic;
+        }
+    }
+}
