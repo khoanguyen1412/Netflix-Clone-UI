@@ -8,13 +8,14 @@ import { FiChevronDown } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import {
   setIsShowMovieInfo,
+  setIsShowVideoTV,
   setShowMovieInfoModal,
   setShowVideoModal,
 } from "../../app/appSlice.js";
 
 MovieItem.propTypes = {};
 
-function MovieItem({ movie, isLargeRow }) {
+function MovieItem({ movie, isLargeRow = false }) {
   const base_url = "https://image.tmdb.org/t/p/original/";
   const dispatch = useDispatch();
   const [mark, setMark] = useState(false);
@@ -41,6 +42,8 @@ function MovieItem({ movie, isLargeRow }) {
   }
 
   function openVideo() {
+    const isTV = movie.release_date ? false : true;
+    dispatch(setIsShowVideoTV(isTV));
     dispatch(setShowVideoModal(true));
   }
 

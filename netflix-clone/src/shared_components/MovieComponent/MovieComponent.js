@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col } from "react-bootstrap";
 import "./MovieComponent.scss";
 import { FaPlay } from "react-icons/fa";
@@ -6,13 +6,42 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { FiChevronDown } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { setShowMovieInfoModal } from "../../app/appSlice.js";
+import {
+  setIsShowMovieInfo,
+  setIsShowVideoTV,
+  setShowMovieInfoModal,
+  setShowVideoModal,
+} from "../../app/appSlice.js";
 
 function MovieComponent({ movie, isLargeRow }) {
   const base_url = "https://image.tmdb.org/t/p/original/";
   const dispatch = useDispatch();
+  const [mark, setMark] = useState(false);
+  const [like, setLike] = useState(false);
+  const [dislike, setDislike] = useState(false);
+
   function openMovieInfoModal() {
+    if (movie.release_date) {
+      dispatch(setIsShowMovieInfo(true));
+    } else {
+      dispatch(setIsShowMovieInfo(false));
+    }
     dispatch(setShowMovieInfoModal(true));
+  }
+
+  function handleLike() {
+    setLike(true);
+    setDislike(false);
+  }
+
+  function handleDislike() {
+    setDislike(true);
+    setLike(false);
+  }
+  function openVideo() {
+    const isTV = movie.release_date ? false : true;
+    dispatch(setIsShowVideoTV(isTV));
+    dispatch(setShowVideoModal(true));
   }
 
   return (
@@ -33,16 +62,25 @@ function MovieComponent({ movie, isLargeRow }) {
           {movie.name || movie.title || movie.original_title}
         </div>
         <div className="actions-group">
-          <div className="movie-btn play-btn">
+          <div className={`movie-btn play-btn `} onClick={openVideo}>
             <FaPlay className="icon-btn icon-play" />
           </div>
-          <div className="movie-btn mark-btn">
+          <div
+            className={`movie-btn mark-btn ${mark ? "active" : ""}`}
+            onClick={() => setMark(!mark)}
+          >
             <AiOutlineCheck className="icon-btn icon-check" />
           </div>
-          <div className="movie-btn like-btn">
+          <div
+            className={`movie-btn like-btn ${like ? "active" : ""}`}
+            onClick={handleLike}
+          >
             <BiLike className="icon-btn icon-like" />
           </div>
-          <div className="movie-btn dislike-btn">
+          <div
+            className={`movie-btn dislike-btn ${dislike ? "active" : ""}`}
+            onClick={handleDislike}
+          >
             <BiDislike className="icon-btn icon-dislike" />
           </div>
           <div className="movie-btn show-info-btn" onClick={openMovieInfoModal}>

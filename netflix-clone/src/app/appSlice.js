@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 export const appSlice = createSlice({
   name: "app",
   initialState: {
@@ -7,10 +8,22 @@ export const appSlice = createSlice({
     },
     showMovieInfoModal: false,
     showVideoModal: false,
+    isShowVideoTV: false, //the showing video is movie or tv?
     isShowMovieInfo: true, //true: the opening info is movie, false: .....is TV Show
+
+    //fetched data
+    listMovies: [],
+    listTVs: [],
   },
   reducers: {
-    login: (state, action) => {
+    setListMovies: (state, payload) => {
+      state.listMovies = payload.payload;
+    },
+    setListTVs: (state, payload) => {
+      state.listTVs = payload.payload;
+    },
+
+    login: (state, payload) => {
       state.user = {
         name: "khoa",
       };
@@ -27,14 +40,20 @@ export const appSlice = createSlice({
     setShowVideoModal: (state, payload) => {
       state.showVideoModal = payload.payload;
     },
+    setIsShowVideoTV: (state, payload) => {
+      state.isShowVideoTV = payload.payload;
+    },
   },
 });
 
 export const {
+  setListMovies,
+  setListTVs,
   setIsShowMovieInfo,
   login,
   logout,
   setShowMovieInfoModal,
   setShowVideoModal,
+  setIsShowVideoTV,
 } = appSlice.actions;
 export default appSlice.reducer;

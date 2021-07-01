@@ -15,10 +15,26 @@ function HomePage(props) {
         title="Netflix Originals"
         fetchUrl={requests.fetchNetflixOriginals}
       />
-      <RowSlider title="Top Rated" fetchUrl={requests.fetchTopRated} />
-      <RowSlider title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-      <RowSlider title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-      <RowSlider title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+      <RowSlider
+        title="Top Rated"
+        rowId={1}
+        fetchUrl={requests.fetchTopRated}
+      />
+      <RowSlider
+        title="Action Movies"
+        rowId={2}
+        fetchUrl={requests.fetchActionMovies}
+      />
+      <RowSlider
+        title="Comedy Movies"
+        rowId={3}
+        fetchUrl={requests.fetchComedyMovies}
+      />
+      <RowSlider
+        title="Horror Movies"
+        rowId={4}
+        fetchUrl={requests.fetchHorrorMovies}
+      />
       <RowSlider
         title="Romance Movies"
         fetchUrl={requests.fetchRomanceMovies}

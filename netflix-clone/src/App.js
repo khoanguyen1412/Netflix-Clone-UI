@@ -3,7 +3,7 @@ import MainScreen from "./pages/MainScreen/MainScreen";
 import LoginScreen from "./pages/LoginScreen/LoginScreen";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MovieInfoModal from "./shared_components/MovieInfoModal/MovieInfoModal.js";
 import NavBar from "./shared_components/NavBar/NavBar.js";
 import HomePage from "./pages/MainScreen/Components/HomePage/HomePage.js";
@@ -11,10 +11,78 @@ import TVShowPage from "./pages/MainScreen/Components/TVShowPage/TVShowPage.js";
 import MoviePage from "./pages/MainScreen/Components/MoviePage/MoviePage.js";
 import PopularPage from "./pages/MainScreen/Components/PopularPage/PopularPage.js";
 import VideoModal from "./shared_components/VideoModal/VideoModal.js";
+import axios from "./api/axios.js";
+import { setListMovies, setListTVs } from "./app/appSlice.js";
 
 function App() {
+  const API_KEY = "f81980ff410e46f422d64ddf3a56dddd";
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.app.user);
   const [showVideo, setShowVideo] = useState(false);
+  const isShowVideoTV = useSelector((state) => state.app.isShowVideoTV);
+
+  useEffect(() => {
+    //get movies
+    function fetchDataMovies() {
+      var request = [];
+      axios
+        .get(`/movie/popular?api_key=${API_KEY}&language=en-US&page=${1}`)
+        .then((res) => {
+          request = request.concat(res.data.results);
+          axios
+            .get(`/movie/popular?api_key=${API_KEY}&language=en-US&page=${2}`)
+            .then((res) => {
+              request = request.concat(res.data.results);
+              axios
+                .get(
+                  `/movie/popular?api_key=${API_KEY}&language=en-US&page=${3}`
+                )
+                .then((res) => {
+                  request = request.concat(res.data.results);
+                  dispatch(setListMovies(request));
+                  //setListMoves(request);
+                })
+                .catch((err) => {});
+            })
+            .catch((err) => {});
+        })
+        .catch((err) => {});
+
+      return request;
+    }
+
+    //get tv shows
+    function fetchDataTVs() {
+      var request = [];
+      axios
+        .get(`/tv/popular?api_key=${API_KEY}&language=en-US&page=${1}`)
+        .then((res) => {
+          request = request.concat(res.data.results);
+          axios
+            .get(`/tv/popular?api_key=${API_KEY}&language=en-US&page=${2}`)
+            .then((res) => {
+              request = request.concat(res.data.results);
+              axios
+                .get(`/tv/popular?api_key=${API_KEY}&language=en-US&page=${3}`)
+                .then((res) => {
+                  request = request.concat(res.data.results);
+                  dispatch(setListTVs(request));
+                  //setListTVs(request);
+                })
+                .catch((err) => {});
+            })
+            .catch((err) => {});
+        })
+        .catch((err) => {});
+
+      return request;
+    }
+
+    //data for grid view
+    fetchDataMovies();
+    fetchDataTVs();
+  }, []);
+
   return (
     <div className="app">
       <Router>
@@ -38,7 +106,7 @@ function App() {
                 <PopularPage title={"My List"} />
               </Route>
             </Switch>
-            <VideoModal isGlobal={true} />
+            <VideoModal isTV={isShowVideoTV} isGlobal={true} />
           </>
         ) : (
           <LoginScreen />

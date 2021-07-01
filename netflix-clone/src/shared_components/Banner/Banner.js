@@ -39,24 +39,29 @@ function Banner(props) {
     history.push("/mylist");
   }
 
+  //`url("https://image.tmdb.org/t/p/original/${bannerMovie?.backdrop_path}")`
   return (
     <header
       className="banner"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center center",
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${bannerMovie?.backdrop_path}")`,
+        backgroundImage: `url("../assets/images/banner_default.jpg")`,
       }}
     >
       <div className="banner__contents">
         <h1 className="banner__title">
-          {bannerMovie?.title ||
+          {/* {bannerMovie?.title ||
             bannerMovie?.name ||
-            bannerMovie?.original_name}
+            bannerMovie?.original_name} */}
+          Superman & Lois
         </h1>
 
         <div className="banner__description">
-          {truncate(bannerMovie?.overview, 150)}
+          {/* {truncate(bannerMovie?.overview, 150)} */}
+          After years of facing megalomaniacal supervillains, monsters wreaking
+          havoc on Metropolis, and alien invaders intent on wiping out the human
+          race...
         </div>
         <div className="banner__buttons">
           <button

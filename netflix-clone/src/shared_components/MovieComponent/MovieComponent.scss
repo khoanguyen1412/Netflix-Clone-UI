@@ -69,6 +69,10 @@
                     &:hover {
                         border-color: white;
                     }
+                    &.active {
+                        background-color: white;
+                        color: #232323;
+                    }
                 }
             }
             .detail-info {

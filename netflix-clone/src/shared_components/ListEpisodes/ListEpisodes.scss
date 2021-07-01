@@ -1,0 +1,93 @@
+.list-episodes {
+    .header {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .dropdown {
+            .dropdown-toggle.btn {
+                background-color: #242424 !important;
+                border-color: white !important;
+                padding: 0.5rem 1rem !important;
+                font-weight: 500;
+                &:focus {
+                    box-shadow: 0 0 0 0.2rem gray !important;
+                }
+            }
+            .dropdown-menu {
+                background-color: #242424;
+                border: 1px solid white;
+                .dropdown-item {
+                    color: white;
+                    padding: 0.5rem 1rem;
+                    strong {
+                        font-size: 1.1rem;
+                    }
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        background-color: #424242;
+                    }
+                }
+            }
+        }
+    }
+    .list-ep {
+        padding: 0 2rem;
+        margin-bottom: 2rem;
+        .ep-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0rem;
+            border-bottom: 1px solid rgba(white, 0.7);
+            transition: all 0.3s;
+
+            cursor: pointer;
+            .stt {
+                padding: 0rem 0.5rem;
+                padding-right: 1rem;
+                font-size: 1.2rem;
+            }
+            .image {
+                height: 6rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0.5rem;
+                img {
+                    height: 100%;
+                }
+            }
+            .detail-info {
+                display: flex;
+                flex-direction: column;
+                .header-info {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 0.5rem;
+                    .name {
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                    }
+                    .time {
+                        font-weight: 500;
+                    }
+                }
+                .description {
+                    padding: 0.5rem;
+                    padding-top: 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+            &.selected {
+                border-radius: 5px;
+                background-color: #333333;
+            }
+            &:hover {
+                background-color: rgba(#333333, 0.5);
+            }
+        }
+    }
+}

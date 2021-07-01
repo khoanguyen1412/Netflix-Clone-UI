@@ -8,11 +8,76 @@ import VideoModal from "../../../VideoModal/VideoModal.js";
 import "./MovieInfo.scss";
 
 function MovieInfo(props) {
-  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const [showVideo, setShowVideo] = useState(false);
   const [mark, setMark] = useState(false);
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
+
+  const suggestList = [
+    {
+      limit: "16+",
+      year: "2020",
+      image: "../assets/images/suggest/suggest1.png",
+      content:
+        "After Wesley Gibson discovers that his murdered father belonged to a secret guild of assassins, he hones his innate killing skills and turns avenger.",
+    },
+    {
+      limit: "13+",
+      year: "2020",
+      image: "../assets/images/suggest/suggest2.png",
+      content:
+        "When a Colombian drug kingpin takes over the smuggling routes to the U.S., a Marine sniper teams with a federal agent to take him and his cartel down.",
+    },
+    {
+      limit: "18+",
+      year: "2020",
+      image: "../assets/images/suggest/suggest3.png",
+      content:
+        "Hell-bent on revenge, terrorists attack a group of world leaders in London. Now, it's up to agent Mike Banning to save the U.S. president -- again.",
+    },
+    {
+      limit: "13+",
+      year: "2020",
+      image: "../assets/images/suggest/suggest4.png",
+      content:
+        "When a troubled sniper begins killing officers he blames for a bungled mission, elite marksman Brandon Beckett sets out to neutralize the threat.",
+    },
+    {
+      limit: "16+",
+      year: "2020",
+      image: "../assets/images/suggest/suggest5.png",
+      content:
+        "A devastating earthquake hits California, and a helicopter pilot and his soon-to-be ex-wife must rescue their daughter before a second one strikes.",
+    },
+    {
+      limit: "13+",
+      year: "2013",
+      image: "../assets/images/suggest/suggest6.png",
+      content:
+        "Retired intelligence operative Robert McCall reluctantly returns to action to protect a young prostitute from brutal members of the Russian Mafia.",
+    },
+    {
+      limit: "18+",
+      year: "1993",
+      image: "../assets/images/suggest/suggest7.png",
+      content:
+        "While working for a railroad baron in colonial Kenya, engineer John Patterson finds his construction efforts stymied by a series of lion attacks.",
+    },
+    {
+      limit: "17+",
+      year: "2001",
+      image: "../assets/images/suggest/suggest8.png",
+      content:
+        "In this fast-paced and action-packed thriller, a retired hitman — along with his sister and a troubled teen — takes revenge on his lethal stepbrother.",
+    },
+    {
+      limit: "13+",
+      year: "2021",
+      image: "../assets/images/suggest/suggest9.png",
+      content:
+        "A hardened mercenary's mission becomes a soul-searching race to survive when he's sent into Bangladesh to rescue a drug lord's kidnapped son.",
+    },
+  ];
 
   function handleLike() {
     setLike(true);
@@ -101,27 +166,19 @@ function MovieInfo(props) {
       <div className="suggestion-group">
         <h3 className="title">More like this</h3>
         <Row>
-          {data.map(() => {
+          {suggestList.map((suggest) => {
             return (
               <Col lg={4} sm={6} xs={12} className="suggest-item">
                 <div className="suggestion-content">
-                  <img
-                    alt=""
-                    className="movie-image"
-                    src="https://cdn.cnn.com/cnnnext/dam/assets/200305123656-bloodshot-super-tease.jpg"
-                  />
+                  <img alt="" className="movie-image" src={suggest.image} />
                   <div className="overview-group">
-                    <div className="limit">16+</div>
-                    <div className="year">2020</div>
+                    <div className="limit">{suggest.limit}</div>
+                    <div className="year">{suggest.year}</div>
                     <div className="movie-btn mark-btn">
                       <BiPlus className="icon-btn icon-check" />
                     </div>
                   </div>
-                  <div className="movie-description">
-                    A dead soldier is resurrected with new biotechnology and
-                    embarks on a mission of revenge in this sci-fi action drama
-                    based on the comic book series.
-                  </div>
+                  <div className="movie-description">{suggest.content}</div>
                 </div>
               </Col>
             );

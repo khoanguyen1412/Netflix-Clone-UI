@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 import { Modal } from "react-bootstrap";
@@ -10,13 +10,17 @@ import screenfull from "screenfull";
 import YouTubePlayer from "react-player/youtube";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowVideoModal } from "../../app/appSlice.js";
+import ListEpisodes from "../ListEpisodes/ListEpisodes.js";
 function VideoModal({
   isGlobal = false,
   showMovieModal = null,
   onClose = null,
+  isTV = false,
 }) {
+  const videoRef = useRef();
   const dispatch = useDispatch();
   const showGlobal = useSelector((state) => state.app.showVideoModal);
+  console.log(isTV);
   const opts = {
     playerVars: {
       autoplay: 1,
@@ -33,6 +37,12 @@ function VideoModal({
       onClose();
     }
   }
+
+  function replayVideo() {
+    const video = document.querySelector(".frame");
+    video.src += "&autoplay=1";
+  }
+
   return (
     <Modal
       className="video-modal"
@@ -44,13 +54,16 @@ function VideoModal({
       <Modal.Body>
         {/* <YouTube videoId="QwievZ1Tx-8" opts={opts} /> */}
         <iframe
+          ref={videoRef}
           className="frame"
-          src="https://www.youtube.com/embed/QwievZ1Tx-8?autoplay=1&fullscreen=1"
+          src="https://www.youtube.com/embed/rrwBnlYOp4g?autoplay=1&fullscreen=1"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
+
+        {isTV && <ListEpisodes replayVideo={replayVideo} />}
         {/* <YouTubePlayer
           url={`https://www.youtube.com/watch?v=QwievZ1Tx-8&t=1s`}
           controls

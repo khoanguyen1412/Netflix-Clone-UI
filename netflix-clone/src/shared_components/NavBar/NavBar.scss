@@ -74,8 +74,13 @@
                 color: white;
                 margin-right: 1rem;
                 cursor: pointer;
+                transition: all 0.3s;
                 &.active {
-                    font-weight: bold;
+                    background-color: #e50914;
+                    padding: 0rem 0.6rem;
+                    padding-bottom: 0.1rem;
+                    border-radius: 5px;
+                    font-weight: 600;
                 }
             }
 
@@ -132,6 +137,12 @@
                 height: 1.3rem;
                 margin-right: 1rem;
                 cursor: pointer;
+                &.icon-noti {
+                    &:hover {
+                        transition: all 0.2s;
+                        color: rgba(white, 0.7);
+                    }
+                }
             }
             .icon-search {
                 transition: all 1s;
@@ -140,7 +151,204 @@
                     display: none;
                 }
             }
-            .icon-noti {
+            .noti-dropdown {
+                .noti-toggle {
+                    outline: none !important;
+                    border: none;
+                    padding: 0;
+                    box-shadow: none !important;
+                    background-color: transparent;
+                    display: flex;
+                    align-items: center;
+                    margin-right: 1rem;
+                    &::after {
+                        display: none;
+                    }
+                    .icon-noti {
+                        margin-right: 0;
+                    }
+                }
+                .dropdown-menu {
+                    background-color: #131111;
+                    width: 25rem;
+                    .dropdown-item-text {
+                        width: 100%;
+                        color: white;
+                        .header {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            align-items: flex-end;
+                            .title {
+                                margin-right: 3rem;
+                                font-size: 1.2rem;
+                            }
+                            .clear-btn {
+                                transition: all 0.6s;
+                                cursor: pointer;
+                                &:hover {
+                                    transition: all 0.6s;
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                        .see-all-btn {
+                            margin: 0 auto;
+                            cursor: pointer;
+                            &:hover {
+                                transition: all 0.6s;
+                                text-decoration: underline;
+                            }
+                        }
+                        &:last-child {
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                    .dropdown-item {
+                        color: white;
+                        padding: 0.5rem 1.5rem;
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            background-color: rgba(gray, 0.6);
+                        }
+                        &.profile-item {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .content-left {
+                                display: flex;
+                                align-items: center;
+                                img {
+                                    width: 1.7rem;
+                                    height: 1.7rem;
+                                    border-radius: 5px;
+                                    margin-right: 0.5rem;
+                                }
+                            }
+                            .icon-lock {
+                                width: 1.2rem;
+                                height: 1.2rem;
+                            }
+                        }
+                        &.action-item {
+                            display: flex;
+                            align-items: center;
+                            .icon-action {
+                                margin-right: 0.7rem;
+                            }
+                        }
+                    }
+                    .list-noti {
+                        max-height: 20rem;
+                        overflow-y: auto;
+                        .noti-item {
+                            display: flex;
+                            align-items: center;
+                            padding: 0.5rem 1rem;
+                            transition: all 0.3s;
+                            .status {
+                                background-color: rgba(#e50914, 0.7);
+                                height: 0.5rem;
+                                width: 0.5rem;
+                                border-radius: 50rem;
+                                margin-right: 1rem;
+                            }
+                            img {
+                                width: 7rem;
+                                height: 3.5rem;
+                            }
+                            .detail-group {
+                                display: flex;
+                                flex-direction: column;
+                                width: 8rem;
+                                flex-grow: 1;
+                                padding-left: 1rem;
+                                color: white;
+                                .message {
+                                    //width: 12rem;
+                                }
+                                .time {
+                                    font-weight: bold;
+                                    font-size: 0.8rem;
+                                    color: gray;
+                                }
+                            }
+                            &:hover {
+                                cursor: pointer;
+                                background-color: rgba(gray, 0.1);
+                            }
+                            &.new {
+                                background-color: rgba(gray, 0.3);
+                                &:hover {
+                                    cursor: pointer;
+                                    background-color: rgba(gray, 0.2);
+                                }
+                            }
+                        }
+                        .empty-noti {
+                            color: white;
+                            display: flex;
+                            justify-content: center;
+                            font-style: italic;
+                        }
+                    }
+                }
+            }
+            .profile-dropdown {
+                .profile-toggle {
+                    outline: none !important;
+                    border: none;
+                    padding: 0;
+                    box-shadow: none !important;
+                    &::after {
+                        display: none;
+                    }
+                }
+                .dropdown-menu {
+                    background-color: #131111;
+                    .dropdown-item-text {
+                        color: white;
+                    }
+                    .dropdown-item {
+                        color: white;
+                        padding: 0.5rem 1.5rem;
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            background-color: rgba(gray, 0.6);
+                        }
+                        &.profile-item {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .content-left {
+                                display: flex;
+                                align-items: center;
+                                img {
+                                    width: 1.7rem;
+                                    height: 1.7rem;
+                                    border-radius: 5px;
+                                    margin-right: 0.5rem;
+                                }
+                            }
+                            .icon-lock {
+                                width: 1.2rem;
+                                height: 1.2rem;
+                            }
+                        }
+                        &.action-item {
+                            display: flex;
+                            align-items: center;
+                            .icon-action {
+                                margin-right: 0.7rem;
+                            }
+                        }
+                    }
+                }
             }
             .nav__avatar {
                 width: 2rem;
