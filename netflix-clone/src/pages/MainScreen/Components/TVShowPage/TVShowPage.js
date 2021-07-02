@@ -22,7 +22,7 @@ function TVShowPage(props) {
   useEffect(() => {}, [listGenres]);
   return (
     <div className="tvShowPage">
-      {listGenres.map((genres) => {
+      {listGenres.map((genres, index) => {
         return (
           <RowSlider
             isSpecial={true}
@@ -30,6 +30,7 @@ function TVShowPage(props) {
             genresId={genres.id}
             title={genres.name}
             fetchUrl=""
+            bottomRow={index === listGenres.length - 1}
           />
         );
       })}

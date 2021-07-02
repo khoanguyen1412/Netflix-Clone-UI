@@ -8,10 +8,11 @@ import { BiLogOut, BiExit, BiBell } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 
 import { AiFillCaretDown, AiOutlineLock } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { logout } from "../../app/appSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, setIsShowDrawer } from "../../app/appSlice.js";
 function DrawerApp(props) {
   const dispatch = useDispatch();
+  const isShow = useSelector((state) => state.app.isShowDrawer);
   const [selectedTab, setSelectedTab] = useState(1); //1: user, 2: noti
   const listNoti = [
     {
@@ -98,7 +99,11 @@ function DrawerApp(props) {
     dispatch(logout(false));
   }
   return (
-    <Drawer anchor={"right"} open={props.openDrawer} onClose={props.onClose}>
+    <Drawer
+      anchor={"right"}
+      open={isShow}
+      onClose={() => dispatch(setIsShowDrawer(false))}
+    >
       <div className="drawer-header">
         <div
           className={`setting-tab ${selectedTab === 1 ? "active" : ""}`}
@@ -191,12 +196,7 @@ function DrawerApp(props) {
         <div className="list-noti">
           {listNoti.map((noti, index) => {
             return (
-              <div
-                // onClick={() => {
-                //   clickNoti(index);
-                // }}
-                className={`noti-item ${noti.isNew ? "new" : ""}`}
-              >
+              <div className={`noti-item ${noti.isNew ? "new" : ""}`}>
                 <div
                   className="status"
                   style={{

@@ -40,6 +40,7 @@ function HomePage(props) {
         fetchUrl={requests.fetchRomanceMovies}
       />
       <RowSlider
+        bottomRow={true}
         title="Documentaries"
         fetchUrl={requests.fetchDocumentariesMovies}
       />

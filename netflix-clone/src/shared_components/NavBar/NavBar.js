@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./NavBar.scss";
 import { useDispatch } from "react-redux";
-import { logout } from "../../app/appSlice";
-import { BsFillBellFill } from "react-icons/bs";
+import { logout, setIsShowDrawer } from "../../app/appSlice";
+import { BsFillBellFill, BsList } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import { BiLogOut, BiExit } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
@@ -18,6 +18,7 @@ function NavBar(props) {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  const [unreadMes, setUnreadMes] = useState(0);
 
   const listNotiInit = [
     {
@@ -71,6 +72,17 @@ function NavBar(props) {
 
   const [listNoti, setListNoti] = useState(listNotiInit);
 
+  useEffect(() => {
+    var countUnread = 0;
+    for (let i = 0; i < listNotiInit.length; i++) {
+      if (listNotiInit[i].isNew === true) {
+        countUnread++;
+      }
+    }
+    setUnreadMes(countUnread);
+    console.log(countUnread);
+  }, []);
+
   function clickNoti(index) {
     var cloneNotis = [];
     for (let i = 0; i < listNoti.length; i++) {
@@ -84,6 +96,14 @@ function NavBar(props) {
       }
     }
     setListNoti(cloneNotis);
+
+    var countUnread = 0;
+    for (let i = 0; i < cloneNotis.length; i++) {
+      if (cloneNotis[i].isNew === true) {
+        countUnread++;
+      }
+    }
+    setUnreadMes(countUnread);
   }
 
   function logoutApp() {
@@ -100,6 +120,7 @@ function NavBar(props) {
 
   function clearAllNoti() {
     setListNoti([]);
+    setUnreadMes(0);
   }
 
   useEffect(() => {
@@ -126,10 +147,50 @@ function NavBar(props) {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">TV Shows</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Movies</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">{`New & Popular`}</Dropdown.Item>
-              <Dropdown.Item href="#/action-4">My List</Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  history.push("/");
+                }}
+                className={`${location.pathname === "/" ? "active" : ""}`}
+              >
+                Home
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  history.push("/tvshows");
+                }}
+                className={`${
+                  location.pathname === "/tvshows" ? "active" : ""
+                }`}
+              >
+                TV Shows
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  history.push("/movies");
+                }}
+                className={`${location.pathname === "/movies" ? "active" : ""}`}
+              >
+                Movies
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  history.push("/newpopular");
+                }}
+                className={`${
+                  location.pathname === "/newpopular" ? "active" : ""
+                }`}
+              >
+                New & Popular
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  history.push("/mylist");
+                }}
+                className={`${location.pathname === "/mylist" ? "active" : ""}`}
+              >
+                My List
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
@@ -202,6 +263,9 @@ function NavBar(props) {
           <Dropdown className="noti-dropdown">
             <Dropdown.Toggle className="noti-toggle" variant="success">
               <BsFillBellFill className="icon-noti nav__icon" />
+              <div className={`badge ${unreadMes === 0 && "hidden"}`}>
+                {unreadMes}
+              </div>
             </Dropdown.Toggle>
 
             <Dropdown.Menu align="right">
@@ -335,6 +399,12 @@ function NavBar(props) {
             src="../assets/images/netflix_avatar.png"
             onClick={logoutApp}
           /> */}
+          <div
+            className="toggle-drawer-btn"
+            onClick={() => dispatch(setIsShowDrawer(true))}
+          >
+            <BsList className="icon-toggle" />
+          </div>
         </div>
       </div>
     </div>

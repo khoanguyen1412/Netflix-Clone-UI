@@ -4,13 +4,15 @@
     .header {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         align-items: center;
         margin-bottom: 1.5rem;
-        .title {
+        .popular-title {
+            margin: 0.5rem 0rem;
             margin-left: 2rem;
         }
         .btn-group {
-            margin-right: 2rem;
+            margin: 0.5rem 2rem;
             button {
                 background-color: transparent;
                 &.active {

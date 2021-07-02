@@ -37,6 +37,7 @@ function RowSlider({
   isSpecial = false,
   isTV = false,
   genresId = null,
+  bottomRow = false,
 }) {
   const [index, setIndex] = useState(0);
   const [movies, setMovies] = useState([]);
@@ -92,7 +93,7 @@ function RowSlider({
 
   return (
     <div className="row-slider">
-      <h2>{title}</h2>
+      <h2 className="row-title">{title}</h2>
       {sliderData?.length > 0 && (
         <Carousel
           interval="500000000000"
@@ -104,8 +105,15 @@ function RowSlider({
             return (
               <Carousel.Item>
                 <Row className="slide-container">
-                  {slide.map((movie) => {
-                    return <MovieItem movie={movie} isLargeRow={isLargeRow} />;
+                  {slide.map((movie, index) => {
+                    return (
+                      <MovieItem
+                        isBottom={bottomRow}
+                        index={index}
+                        movie={movie}
+                        isLargeRow={isLargeRow}
+                      />
+                    );
                   })}
                 </Row>
               </Carousel.Item>

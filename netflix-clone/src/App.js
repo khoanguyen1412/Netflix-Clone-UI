@@ -1,4 +1,5 @@
 import "./App.scss";
+import React from "react";
 import MainScreen from "./pages/MainScreen/MainScreen";
 import LoginScreen from "./pages/LoginScreen/LoginScreen";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -12,25 +13,20 @@ import MoviePage from "./pages/MainScreen/Components/MoviePage/MoviePage.js";
 import PopularPage from "./pages/MainScreen/Components/PopularPage/PopularPage.js";
 import VideoModal from "./shared_components/VideoModal/VideoModal.js";
 import axios from "./api/axios.js";
-import { logout, setListMovies, setListTVs } from "./app/appSlice.js";
-import Drawer from "@material-ui/core/Drawer";
-import { FormControl, Dropdown } from "react-bootstrap";
-import { BsFillBellFill } from "react-icons/bs";
-import { FaSearch } from "react-icons/fa";
-import { BiLogOut, BiExit } from "react-icons/bi";
-import { FiUser } from "react-icons/fi";
+import { setIsShowToast, setListMovies, setListTVs } from "./app/appSlice.js";
+import { CgClose } from "react-icons/cg";
+import IconButton from "@material-ui/core/IconButton";
 
-import { AiFillCaretDown, AiOutlineLock } from "react-icons/ai";
 import DrawerApp from "./shared_components/DrawerApp/DrawerApp.js";
+import Snackbar from "@material-ui/core/Snackbar";
 
 function App() {
-  const [openDrawer, setOpenDrawer] = useState(false);
   const API_KEY = "f81980ff410e46f422d64ddf3a56dddd";
   const dispatch = useDispatch();
   const user = useSelector((state) => state.app.user);
-  const [showVideo, setShowVideo] = useState(false);
   const isShowVideoTV = useSelector((state) => state.app.isShowVideoTV);
-
+  const showToast = useSelector((state) => state.app.isShowToast);
+  const toastText = useSelector((state) => state.app.toastText);
   useEffect(() => {
     //get movies
     function fetchDataMovies() {
@@ -93,14 +89,12 @@ function App() {
     fetchDataTVs();
   }, []);
 
+  function handleClose() {
+    dispatch(setIsShowToast(false));
+  }
+
   return (
     <div className="app">
-      <button
-        style={{ zIndex: "1000000000", position: "fixed" }}
-        onClick={() => setOpenDrawer(true)}
-      >
-        ok
-      </button>
       <Router>
         {user ? (
           <>
@@ -128,8 +122,29 @@ function App() {
           <LoginScreen />
         )}
       </Router>
-
-      <DrawerApp openDrawer={openDrawer} onClose={() => setOpenDrawer(false)} />
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        open={showToast}
+        autoHideDuration={2000}
+        onClose={handleClose}
+        message={toastText}
+        action={
+          <React.Fragment>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CgClose />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
+      <DrawerApp />
       <MovieInfoModal />
     </div>
   );

@@ -5,22 +5,46 @@ import { FaPlay } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { FiChevronDown } from "react-icons/fi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setIsShowMovieInfo,
+  setIsShowToast,
   setIsShowVideoTV,
   setShowMovieInfoModal,
   setShowVideoModal,
+  setToastText,
 } from "../../app/appSlice.js";
+import { withStyles } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
 
-MovieItem.propTypes = {};
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    fontSize: 17,
+  },
+  arrow: {
+    fontSize: 20,
+    color: "#FFFFFF",
+    "&::before": {
+      backgroundColor: "#FFFFFF",
+    },
+  },
+}))(Tooltip);
 
-function MovieItem({ movie, isLargeRow = false }) {
+function MovieItem({
+  movie,
+  index = null,
+  isLargeRow = false,
+  isBottom = false,
+}) {
   const base_url = "https://image.tmdb.org/t/p/original/";
   const dispatch = useDispatch();
   const [mark, setMark] = useState(false);
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
+  const isShowToast = useSelector((state) => state.app.isShowToast);
 
   function openMovieInfoModal() {
     if (movie.release_date) {
@@ -34,11 +58,46 @@ function MovieItem({ movie, isLargeRow = false }) {
   function handleLike() {
     setLike(true);
     setDislike(false);
+    return;
+    dispatch(setIsShowToast(false));
+    dispatch(
+      setToastText(
+        `You have just liked ${
+          movie.name || movie.title || movie.original_title
+        }!`
+      )
+    );
+    if (!isShowToast) dispatch(setIsShowToast(true));
   }
 
   function handleDislike() {
     setDislike(true);
     setLike(false);
+
+    return;
+    dispatch(setIsShowToast(false));
+    dispatch(
+      setToastText(
+        `You have just disliked ${
+          movie.name || movie.title || movie.original_title
+        }!`
+      )
+    );
+    if (!isShowToast) dispatch(setIsShowToast(true));
+  }
+
+  function handleMark() {
+    setMark(!mark);
+    return;
+    dispatch(setIsShowToast(false));
+    dispatch(
+      setToastText(
+        `You have just marked ${
+          movie.name || movie.title || movie.original_title
+        } as Favorite!`
+      )
+    );
+    if (!isShowToast) dispatch(setIsShowToast(true));
   }
 
   function openVideo() {
@@ -48,7 +107,11 @@ function MovieItem({ movie, isLargeRow = false }) {
   }
 
   return (
-    <Col className="movie-item">
+    <Col
+      className={`movie-item ${isBottom ? "bottom" : ""} ${
+        index ? "movie" + index : ""
+      }`}
+    >
       <img
         alt=""
         style={{}}
@@ -65,30 +128,43 @@ function MovieItem({ movie, isLargeRow = false }) {
           {movie.name || movie.title || movie.original_title}
         </div>
         <div className="actions-group">
-          <div className={`movie-btn play-btn `} onClick={openVideo}>
-            <FaPlay className="icon-btn icon-play" />
-          </div>
-          <div
-            className={`movie-btn mark-btn ${mark ? "active" : ""}`}
-            onClick={() => setMark(!mark)}
-          >
-            <AiOutlineCheck className="icon-btn icon-check" />
-          </div>
-          <div
-            className={`movie-btn like-btn ${like ? "active" : ""}`}
-            onClick={handleLike}
-          >
-            <BiLike className="icon-btn icon-like" />
-          </div>
-          <div
-            className={`movie-btn dislike-btn ${dislike ? "active" : ""}`}
-            onClick={handleDislike}
-          >
-            <BiDislike className="icon-btn icon-dislike" />
-          </div>
-          <div className="movie-btn show-info-btn" onClick={openMovieInfoModal}>
-            <FiChevronDown className="icon-btn icon-show" />
-          </div>
+          <LightTooltip title="Play this movie" arrow placement="top-center">
+            <div className={`movie-btn play-btn `} onClick={openVideo}>
+              <FaPlay className="icon-btn icon-play" />
+            </div>
+          </LightTooltip>
+          <LightTooltip title="Mark as favorite" arrow placement="top-center">
+            <div
+              className={`movie-btn mark-btn ${mark ? "active" : ""}`}
+              onClick={handleMark}
+            >
+              <AiOutlineCheck className="icon-btn icon-check" />
+            </div>
+          </LightTooltip>
+          <LightTooltip title="Like this movie" arrow placement="top-center">
+            <div
+              className={`movie-btn like-btn ${like ? "active" : ""}`}
+              onClick={handleLike}
+            >
+              <BiLike className="icon-btn icon-like" />
+            </div>
+          </LightTooltip>
+          <LightTooltip title="Dislike this movie" arrow placement="top-center">
+            <div
+              className={`movie-btn dislike-btn ${dislike ? "active" : ""}`}
+              onClick={handleDislike}
+            >
+              <BiDislike className="icon-btn icon-dislike" />
+            </div>
+          </LightTooltip>
+          <LightTooltip title="Show more info" arrow placement="top-center">
+            <div
+              className="movie-btn show-info-btn"
+              onClick={openMovieInfoModal}
+            >
+              <FiChevronDown className="icon-btn icon-show" />
+            </div>
+          </LightTooltip>
         </div>
         <div className="detail-info">
           <div className="age-limit">13+</div>

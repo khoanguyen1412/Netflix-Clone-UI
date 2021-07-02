@@ -32,3 +32,10 @@ html {
     transform: rotate(360deg);
   }
 }
+
+.MuiPaper-root.MuiSnackbarContent-root {
+  background-color: #141414;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+}

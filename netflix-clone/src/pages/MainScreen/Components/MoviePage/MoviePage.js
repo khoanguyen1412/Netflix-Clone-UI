@@ -21,7 +21,7 @@ function MoviePage(props) {
   useEffect(() => {}, [listGenres]);
   return (
     <div className="moviePage">
-      {listGenres.map((genres) => {
+      {listGenres.map((genres, index) => {
         return (
           <RowSlider
             isSpecial={true}
@@ -29,6 +29,7 @@ function MoviePage(props) {
             genresId={genres.id}
             title={genres.name}
             fetchUrl=""
+            bottomRow={index === listGenres.length - 1}
           />
         );
       })}

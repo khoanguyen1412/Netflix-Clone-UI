@@ -6,6 +6,24 @@ import { FiChevronDown } from "react-icons/fi";
 import { Row, Col } from "react-bootstrap";
 import VideoModal from "../../../VideoModal/VideoModal.js";
 import "./MovieInfo.scss";
+import { withStyles } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
+
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    fontSize: 17,
+  },
+  arrow: {
+    fontSize: 20,
+    color: "#FFFFFF",
+    "&::before": {
+      backgroundColor: "#FFFFFF",
+    },
+  },
+}))(Tooltip);
 
 function MovieInfo(props) {
   const [showVideo, setShowVideo] = useState(false);
@@ -100,31 +118,40 @@ function MovieInfo(props) {
       <div className="banner-content">
         <h2 className="movie-name">AQUAMAN</h2>
         <div className="action-group">
-          <button
-            className="banner__button play-button"
-            onClick={() => setShowVideo(true)}
-          >
-            <FaPlay className="icon-play icon-button" />
-            Play
-          </button>
-          <div
-            className={`movie-btn mark-btn ${mark ? "active" : ""}`}
-            onClick={() => setMark(!mark)}
-          >
-            <BiPlus className="icon-btn icon-check" />
-          </div>
-          <div
-            className={`movie-btn like-btn ${like ? "active" : ""}`}
-            onClick={handleLike}
-          >
-            <BiLike className="icon-btn icon-like" />
-          </div>
-          <div
-            className={`movie-btn dislike-btn ${dislike ? "active" : ""}`}
-            onClick={handleDislike}
-          >
-            <BiDislike className="icon-btn icon-dislike" />
-          </div>
+          <LightTooltip title="Play this movie" arrow placement="top-center">
+            <button
+              className="banner__button play-button"
+              onClick={() => setShowVideo(true)}
+            >
+              <FaPlay className="icon-play icon-button" />
+              Play
+            </button>
+          </LightTooltip>
+
+          <LightTooltip title="Add to My list" arrow placement="top-center">
+            <div
+              className={`movie-btn mark-btn ${mark ? "active" : ""}`}
+              onClick={() => setMark(!mark)}
+            >
+              <BiPlus className="icon-btn icon-check" />
+            </div>
+          </LightTooltip>
+          <LightTooltip title="Like this movie" arrow placement="top-center">
+            <div
+              className={`movie-btn like-btn ${like ? "active" : ""}`}
+              onClick={handleLike}
+            >
+              <BiLike className="icon-btn icon-like" />
+            </div>
+          </LightTooltip>
+          <LightTooltip title="Dislike this movie" arrow placement="top-center">
+            <div
+              className={`movie-btn dislike-btn ${dislike ? "active" : ""}`}
+              onClick={handleDislike}
+            >
+              <BiDislike className="icon-btn icon-dislike" />
+            </div>
+          </LightTooltip>
         </div>
       </div>
       <div className="movie-detail">
@@ -174,9 +201,15 @@ function MovieInfo(props) {
                   <div className="overview-group">
                     <div className="limit">{suggest.limit}</div>
                     <div className="year">{suggest.year}</div>
-                    <div className="movie-btn mark-btn">
-                      <BiPlus className="icon-btn icon-check" />
-                    </div>
+                    <LightTooltip
+                      title="Add to My list"
+                      arrow
+                      placement="top-center"
+                    >
+                      <div className="movie-btn mark-btn">
+                        <BiPlus className="icon-btn icon-check" />
+                      </div>
+                    </LightTooltip>
                   </div>
                   <div className="movie-description">{suggest.content}</div>
                 </div>
@@ -190,9 +223,11 @@ function MovieInfo(props) {
         <div className="line"></div>
       </div>
       <div className="loadmote-btn-container">
-        <div className="loadmore-btn show-info-btn">
-          <FiChevronDown className="icon-btn icon-show" />
-        </div>
+        <LightTooltip title="Show more" arrow placement="top-center">
+          <div className="loadmore-btn show-info-btn">
+            <FiChevronDown className="icon-btn icon-show" />
+          </div>
+        </LightTooltip>
       </div>
 
       <div className="movie-super-detail">

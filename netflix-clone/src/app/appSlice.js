@@ -10,17 +10,30 @@ export const appSlice = createSlice({
     showVideoModal: false,
     isShowVideoTV: false, //the showing video is movie or tv?
     isShowMovieInfo: true, //true: the opening info is movie, false: .....is TV Show
-
+    isShowDrawer: false,
     //fetched data
     listMovies: [],
     listTVs: [],
+
+    //toast
+    isShowToast: false,
+    toastText: "",
   },
   reducers: {
+    setIsShowToast: (state, payload) => {
+      state.isShowToast = payload.payload;
+    },
+    setToastText: (state, payload) => {
+      state.toastText = payload.payload;
+    },
     setListMovies: (state, payload) => {
       state.listMovies = payload.payload;
     },
     setListTVs: (state, payload) => {
       state.listTVs = payload.payload;
+    },
+    setIsShowDrawer: (state, payload) => {
+      state.isShowDrawer = payload.payload;
     },
 
     login: (state, payload) => {
@@ -47,6 +60,8 @@ export const appSlice = createSlice({
 });
 
 export const {
+  setIsShowToast,
+  setToastText,
   setListMovies,
   setListTVs,
   setIsShowMovieInfo,
@@ -55,5 +70,6 @@ export const {
   setShowMovieInfoModal,
   setShowVideoModal,
   setIsShowVideoTV,
+  setIsShowDrawer,
 } = appSlice.actions;
 export default appSlice.reducer;

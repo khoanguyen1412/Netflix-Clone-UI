@@ -8,8 +8,8 @@ function PopularPage({ title = "New & Popular on Netflix" }) {
   return (
     <div className="popularPage">
       <div className="header">
-        <h3 className="title">{title}</h3>
-        <ButtonGroup aria-label="Basic example">
+        <h3 className="popular-title">{title}</h3>
+        <ButtonGroup aria-label="Basic example" className="popular-btn-group">
           <Button
             className={`${mode === 1 ? "active" : ""}`}
             variant="secondary"

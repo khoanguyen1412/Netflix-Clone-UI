@@ -6,7 +6,11 @@ import requests from "../../api/Requests";
 import { FaPlay } from "react-icons/fa";
 import { BiInfoCircle } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { setShowVideoModal } from "../../app/appSlice.js";
+import {
+  setIsShowMovieInfo,
+  setShowMovieInfoModal,
+  setShowVideoModal,
+} from "../../app/appSlice.js";
 import { useHistory } from "react-router-dom";
 
 function Banner(props) {
@@ -37,6 +41,11 @@ function Banner(props) {
 
   function openMyList() {
     history.push("/mylist");
+  }
+
+  function openMovieInfoModal() {
+    dispatch(setIsShowMovieInfo(false));
+    dispatch(setShowMovieInfoModal(true));
   }
 
   //`url("https://image.tmdb.org/t/p/original/${bannerMovie?.backdrop_path}")`
@@ -71,9 +80,12 @@ function Banner(props) {
             <FaPlay className="icon-play icon-button" />
             Play
           </button>
-          <button className="banner__button info-button" onClick={openMyList}>
+          <button
+            className="banner__button info-button"
+            onClick={openMovieInfoModal}
+          >
             <BiInfoCircle className="icon-info icon-button" />
-            My List
+            More Info
           </button>
         </div>
       </div>

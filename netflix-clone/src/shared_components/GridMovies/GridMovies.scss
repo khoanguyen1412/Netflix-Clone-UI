@@ -6,3 +6,48 @@
         margin-bottom: 1rem;
     }
 }
+.row-movie {
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    height: 9rem;
+    .movie-item {
+        flex-grow: 1;
+    }
+    &:last-child {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    .row-movie {
+        height: 8rem;
+    }
+}
+@media (max-width: 850px) {
+    .row-movie {
+        height: 7rem;
+    }
+}
+@media (max-width: 750px) {
+    .popular-title {
+        font-size: 1.5rem !important;
+    }
+    .popular-btn-group {
+        button {
+            font-size: 0.9rem !important;
+        }
+    }
+    .row-movie {
+        height: 6rem;
+    }
+}
+@media (max-width: 600px) {
+    .row-movie {
+        height: 5rem;
+    }
+}
+@media (max-width: 450px) {
+}
+@media (max-width: 400px) {
+}
