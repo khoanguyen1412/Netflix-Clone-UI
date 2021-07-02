@@ -4,12 +4,14 @@ import requests from "../../../../api/Requests";
 import RowSlider from "../../../../shared_components/RowSlider/RowSlider.js";
 
 import Banner from "../../../../shared_components/Banner/Banner";
+import RowTop from "../../../../shared_components/RowTop/RowTop.js";
 HomePage.propTypes = {};
 
 function HomePage(props) {
   return (
     <div className="homePage">
       <Banner />
+      {/* <RowTop /> */}
       <RowSlider title="Trending Now" fetchUrl={requests.fetchTrending} />
       <RowSlider
         title="Netflix Originals"
