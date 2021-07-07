@@ -2,7 +2,7 @@ import React from "react";
 import "./HomePage.scss";
 import requests from "../../../../api/Requests";
 import RowSlider from "../../../../shared_components/RowSlider/RowSlider.js";
-
+import NavBar from "../../../../shared_components/NavBar/NavBar";
 import Banner from "../../../../shared_components/Banner/Banner";
 import RowTop from "../../../../shared_components/RowTop/RowTop.js";
 HomePage.propTypes = {};
@@ -10,6 +10,7 @@ HomePage.propTypes = {};
 function HomePage(props) {
   return (
     <div className="homePage">
+      <NavBar />
       <Banner />
       {/* <RowTop /> */}
       <RowSlider title="Trending Now" fetchUrl={requests.fetchTrending} />

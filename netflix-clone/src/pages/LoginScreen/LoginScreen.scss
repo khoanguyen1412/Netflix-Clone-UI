@@ -41,6 +41,10 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        color: #fff;
+        padding: 20px;
+        left: 0;
+        right: 0;
         width: 100%;
         h1 {
             padding: 20px;
@@ -67,7 +71,7 @@
                     width: 30%;
                 }
                 .loginScreen__getStarted {
-                    padding: 16px 20px;
+                    padding: 10px 20px;
                     font-size: 1rem;
                     color: #fff;
                     background-color: #e50914;

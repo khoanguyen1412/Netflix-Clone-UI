@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MovieInfoModal from "./shared_components/MovieInfoModal/MovieInfoModal.js";
-import NavBar from "./shared_components/NavBar/NavBar.js";
 import HomePage from "./pages/MainScreen/Components/HomePage/HomePage.js";
 import TVShowPage from "./pages/MainScreen/Components/TVShowPage/TVShowPage.js";
 import MoviePage from "./pages/MainScreen/Components/MoviePage/MoviePage.js";
@@ -98,7 +97,6 @@ function App() {
       <Router>
         {user ? (
           <>
-            <NavBar />
             <Switch>
               <Route path="/" exact>
                 <HomePage />

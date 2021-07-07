@@ -378,7 +378,7 @@ function NavBar(props) {
                 <AiOutlineLock className="icon-lock" />
               </Dropdown.Item>
               <Dropdown.Divider />
-              <Dropdown.Item className="action-item">
+              <Dropdown.Item className="action-item" onClick={logoutApp}>
                 <FiUser className="icon-action icon-profile" />
                 Manage Profile
               </Dropdown.Item>

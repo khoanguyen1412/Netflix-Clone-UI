@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import SignInForm from "../../shared_components/SignInForm/SignInForm";
+import SignupScreen from "../SignUpScreen/SignupScreen";
 import "./LoginScreen.scss";
 
 function LoginScreen(props) {
-  const [signIn, setSignIn] = useState(true);
+  const [signIn, setSignIn] = useState(false);
   return (
     <div className="loginScreen">
       <div className="loginScreen__background">
@@ -20,7 +21,7 @@ function LoginScreen(props) {
       <div className="loginScreen__gradient"></div>
       <div className="loginScreen__body">
         {signIn ? (
-          <SignInForm />
+          <SignupScreen />
         ) : (
           <>
             <h1>Unlimited films, TV programmes and more.</h1>
@@ -32,7 +33,12 @@ function LoginScreen(props) {
             <div className="loginScreen__input">
               <form>
                 <input type="email" placeholder="Email Address" />
-                <button className="loginScreen__getStarted">GET STARTED</button>
+                <button
+                  onClick={() => setSignIn(true)}
+                  className="loginScreen__getStarted"
+                >
+                  GET STARTED
+                </button>
               </form>
             </div>
           </>

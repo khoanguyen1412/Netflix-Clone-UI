@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../../api/axios.js";
 import requests from "../../../../api/Requests.js";
+import NavBar from "../../../../shared_components/NavBar/NavBar.js";
 import RowSlider from "../../../../shared_components/RowSlider/RowSlider.js";
 import "./TVShowPage.scss";
 
@@ -22,6 +23,7 @@ function TVShowPage(props) {
   useEffect(() => {}, [listGenres]);
   return (
     <div className="tvShowPage">
+      <NavBar />
       {listGenres.map((genres, index) => {
         return (
           <RowSlider

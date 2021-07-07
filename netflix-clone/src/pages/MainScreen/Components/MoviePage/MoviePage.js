@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../../../../api/axios.js";
 import requests from "../../../../api/Requests.js";
 import RowSlider from "../../../../shared_components/RowSlider/RowSlider.js";
+import NavBar from "../../../../shared_components/NavBar/NavBar";
 import "./MoviePage.scss";
 
 function MoviePage(props) {
@@ -21,6 +22,7 @@ function MoviePage(props) {
   useEffect(() => {}, [listGenres]);
   return (
     <div className="moviePage">
+      <NavBar />
       {listGenres.map((genres, index) => {
         return (
           <RowSlider
