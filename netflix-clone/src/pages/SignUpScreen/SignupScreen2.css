@@ -9,7 +9,6 @@
     height:100vh;
 }
 .signupScreen2>.logo{
-    position: fixed;
     top:30px;
     left: 0;
     width: 150px;
@@ -53,7 +52,7 @@
     border-radius: 5px;
     background: #e50914;
     width: 400px;
-
+    max-height: 200px;
 }
 .signupScreen2>label{
     max-width: 250px;
