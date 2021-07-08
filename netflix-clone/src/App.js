@@ -11,6 +11,7 @@ import TVShowPage from "./pages/MainScreen/Components/TVShowPage/TVShowPage.js";
 import MoviePage from "./pages/MainScreen/Components/MoviePage/MoviePage.js";
 import PopularPage from "./pages/MainScreen/Components/PopularPage/PopularPage.js";
 import VideoModal from "./shared_components/VideoModal/VideoModal.js";
+import ProfileScreen from "./pages/Profile/ProfileScreen";
 import axios from "./api/axios.js";
 import { setIsShowToast, setListMovies, setListTVs } from "./app/appSlice.js";
 import { CgClose } from "react-icons/cg";
@@ -112,6 +113,9 @@ function App() {
               </Route>
               <Route path="/mylist">
                 <PopularPage title={"My List"} />
+              </Route>
+              <Route path="/profile">
+                <ProfileScreen />
               </Route>
             </Switch>
             <VideoModal isTV={isShowVideoTV} isGlobal={true} />

@@ -1,0 +1,43 @@
+.profile{
+
+}
+.profile>.profileScreen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profile>.profileScreen>label{
+    font-size: 2rem;
+    font-weight: 700;
+    color:#fff;
+}
+.profile>.profileScreen>button{
+    font-size: 1.5rem;
+    color:gray;
+    background-color:transparent;
+    border:1px solid gray;
+    border-color: gray;
+    border-radius: 5px;
+    margin: 30px;
+}
+
+.profile>.profileScreen_logo{
+    left: 0;
+    max-width: 15%;
+    object-fit: contain;
+    padding-left: 20px;
+}
+.profile>.profileScreen>.profileContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.profile>.profileScreen>.profileContainer>.profileimage{
+    padding:5px;
+    margin: 5px;
+    max-width: 15%;
+    border-radius: 5px;
+}

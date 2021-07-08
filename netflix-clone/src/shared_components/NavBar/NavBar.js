@@ -382,7 +382,10 @@ function NavBar(props) {
                 <FiUser className="icon-action icon-profile" />
                 Manage Profile
               </Dropdown.Item>
-              <Dropdown.Item className="action-item">
+              <Dropdown.Item
+                className="action-item"
+                onClick={() => history.push("/profile")}
+              >
                 <BiExit className="icon-action icon-exit" />
                 Exit Profile
               </Dropdown.Item>
