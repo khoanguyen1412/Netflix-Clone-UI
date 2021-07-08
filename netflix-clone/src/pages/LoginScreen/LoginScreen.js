@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import SignInForm from "../../shared_components/SignInForm/SignInForm";
-import SignupScreen from "../SignUpScreen/SignupScreen";
+import SignupScreen from "../SignUpScreen/SignupScreen1";
+import { useHistory, useLocation } from "react-router-dom";
 import "./LoginScreen.scss";
 
 function LoginScreen(props) {
   const [signIn, setSignIn] = useState(false);
+  const history = useHistory();
   return (
     <div className="loginScreen">
       <div className="loginScreen__background">
@@ -21,7 +23,7 @@ function LoginScreen(props) {
       <div className="loginScreen__gradient"></div>
       <div className="loginScreen__body">
         {signIn ? (
-          <SignupScreen />
+          <SignInForm />
         ) : (
           <>
             <h1>Unlimited films, TV programmes and more.</h1>
@@ -34,7 +36,7 @@ function LoginScreen(props) {
               <form>
                 <input type="email" placeholder="Email Address" />
                 <button
-                  onClick={() => setSignIn(true)}
+                  onClick={() => history.push("/signup1")}
                   className="loginScreen__getStarted"
                 >
                   GET STARTED
