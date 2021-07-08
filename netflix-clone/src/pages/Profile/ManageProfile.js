@@ -20,7 +20,7 @@ function ManageProfile() {
             alt=""
             src="../assets/images/profile_edit_1.png"
             onClick={() => {
-              history.push("/");
+              history.push("/profiledetail");
             }}
           />
           <img
@@ -28,7 +28,7 @@ function ManageProfile() {
             alt=""
             src="../assets/images/profile_edit_2.png"
             onClick={() => {
-              history.push("/");
+              history.push("/profiledetail");
             }}
           />
           <img
@@ -36,7 +36,7 @@ function ManageProfile() {
             alt=""
             src="../assets/images/profile_edit_3.png"
             onClick={() => {
-              history.push("/");
+              history.push("/profiledetail");
             }}
           />
           <img
@@ -44,7 +44,7 @@ function ManageProfile() {
             alt=""
             src="../assets/images/profile_edit_4.png"
             onClick={() => {
-              history.push("/");
+              history.push("/profiledetail");
             }}
           />
           <img
@@ -52,7 +52,7 @@ function ManageProfile() {
             alt=""
             src="../assets/images/profile_edit_1.png"
             onClick={() => {
-              history.push("/");
+              history.push("/profiledetail");
             }}
           ></img>
         </div>

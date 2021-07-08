@@ -1,0 +1,82 @@
+.profileScreen{
+    height: 100vh;
+    color:white;
+}
+.profileScreen_body{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+.profileScreen_body>h2{
+    font-size: 60px;
+    font-weight: 400;
+    border-bottom:1px solid #2B2c2d ;
+    margin-bottom: 20px;
+}
+.profileScreen_info{
+    display: flex;
+
+}
+.profileScreen_details{
+    color:white;
+    margin-left: 25px;
+    flex: 1;
+}
+.profileScreen_details>h2{
+    background-color:gray;
+    padding: 15px;
+    font-size: 15px;
+    padding-left: 20px;
+}
+.profileScreen_info>img{
+    height: 100px;
+}
+.profileScreen_plans>Dropdown{
+    border-bottom: 1px solid #282c2d;
+    padding-bottom: 10px;
+}
+.profileScreen_signout{
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 5%;
+    width: 100%;
+    color: #111;
+    background-color: #fff;
+    cursor: pointer;
+    margin: 15px;
+    border: none;
+    border-radius: 5px;
+}
+.profileScreen_cancel{
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 5%;
+    width: 100%;
+    color: gray;
+    background-color: #111;
+    cursor: pointer;
+    margin: 15px;
+    border: none;
+    border-radius: 5px;
+    border-color: gray;
+}
+.profileScreen_logo{
+    left: 0;
+    min-width: 100px;
+    max-width: 15%;
+    object-fit: contain;
+    padding-left: 20px;
+}
+.option2{
+    border-bottom: 1px solid #282c2d;
+    padding-bottom: 10px;
+}
+.buttonContainer{
+    display: flex;
+}
+
+
+
