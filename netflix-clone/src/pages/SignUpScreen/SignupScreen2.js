@@ -91,7 +91,7 @@ function SignupScreen2() {
         }}
       />
       <div className="Container">
-        <button className="next" onClick={() => history.push("/signup2")}>
+        <button className="next" onClick={() => history.push("/signup3")}>
           Next
         </button>
       </div>

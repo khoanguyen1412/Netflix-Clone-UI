@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./SignInForm.scss";
 import { login } from "../../app/appSlice";
+import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 function SignInForm(props) {
+  const history = useHistory();
   const dispatch = useDispatch();
   function loginApp() {
     dispatch(login(true));
@@ -16,7 +18,7 @@ function SignInForm(props) {
         <input placeholder="Email" type="email" />
         <input placeholder="Password" type="password" />
 
-        <button type="submit" onClick={loginApp}>
+        <button type="submit" onClick={() => history.push("/profile")}>
           Sign In
         </button>
         <h4>

@@ -9,7 +9,7 @@
     align-items: center;
 }
 .profile>.profileScreen>label{
-    font-size: 2rem;
+    font-size: 200%;
     font-weight: 700;
     color:#fff;
 }
@@ -25,6 +25,7 @@
 
 .profile>.profileScreen_logo{
     left: 0;
+    min-width: 100px;
     max-width: 15%;
     object-fit: contain;
     padding-left: 20px;
