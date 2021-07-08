@@ -1,23 +1,24 @@
+import { Icon } from "@material-ui/core";
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import "./ProfileScreen.css";
+import "./ManageProfile.css";
 
-function ProfileScreen() {
+function ManageProfile() {
   const history = useHistory();
   return (
-    <div className="profile">
+    <div className="manageprofile">
       <img
         src="../assets/images/netflix_logo.png"
         alt=""
         className="profileScreen_logo"
       />
       <div className="profileScreen">
-        <label>Who's watching?</label>
+        <label>Manage Profiles:</label>
         <div className="profileContainer">
           <img
             className="profileimage"
             alt=""
-            src="../assets/images/profile_image_5.png"
+            src="../assets/images/profile_edit_1.png"
             onClick={() => {
               history.push("/");
             }}
@@ -25,7 +26,7 @@ function ProfileScreen() {
           <img
             className="profileimage"
             alt=""
-            src="../assets/images/profile_image_2.png"
+            src="../assets/images/profile_edit_2.png"
             onClick={() => {
               history.push("/");
             }}
@@ -33,7 +34,7 @@ function ProfileScreen() {
           <img
             className="profileimage"
             alt=""
-            src="../assets/images/profile_image_3.png"
+            src="../assets/images/profile_edit_3.png"
             onClick={() => {
               history.push("/");
             }}
@@ -41,7 +42,7 @@ function ProfileScreen() {
           <img
             className="profileimage"
             alt=""
-            src="../assets/images/profile_image_4.png"
+            src="../assets/images/profile_edit_4.png"
             onClick={() => {
               history.push("/");
             }}
@@ -49,22 +50,22 @@ function ProfileScreen() {
           <img
             className="profileimage"
             alt=""
-            src="../assets/images/profile_image_5.png"
+            src="../assets/images/profile_edit_1.png"
             onClick={() => {
               history.push("/");
             }}
-          />
+          ></img>
         </div>
         <button
           onClick={() => {
-            history.push("/manageprofile");
+            history.push("/profile");
           }}
         >
-          MANAGE PROFILE
+          DONE
         </button>
       </div>
     </div>
   );
 }
 
-export default ProfileScreen;
+export default ManageProfile;

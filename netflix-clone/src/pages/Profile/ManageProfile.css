@@ -1,19 +1,19 @@
-.profile{
+.manageprofile{
 
 }
-.profile>.profileScreen {
+.manageprofile>.profileScreen {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.profile>.profileScreen>label{
+.manageprofile>.profileScreen>label{
     font-size: 200%;
     font-weight: 700;
     color:#fff;
 }
-.profile>.profileScreen>button{
+.manageprofile>.profileScreen>button{
     font-size: 1.5rem;
     color:gray;
     background-color:transparent;
@@ -23,20 +23,20 @@
     margin: 30px;
 }
 
-.profile>.profileScreen_logo{
+.manageprofile>.profileScreen_logo{
     left: 0;
     min-width: 100px;
     max-width: 15%;
     object-fit: contain;
     padding-left: 20px;
 }
-.profile>.profileScreen>.profileContainer{
+.manageprofile>.profileScreen>.profileContainer{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.profile>.profileScreen>.profileContainer>.profileimage{
+.manageprofile>.profileScreen>.profileContainer>.profileimage{
     padding:5px;
     margin: 5px;
     width: 15%;

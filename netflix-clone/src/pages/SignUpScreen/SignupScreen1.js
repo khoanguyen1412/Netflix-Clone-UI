@@ -17,7 +17,13 @@ function SignupScreen1() {
         </label>
         <input placeholder="Username" required />
         <input placeholder="Add a Password" type="password" required />
-        <button onClick={() => history.push("/signup2")}>Next</button>
+        <button
+          onClick={() => {
+            history.push("/signup2");
+          }}
+        >
+          Next
+        </button>
       </form>
     </div>
   );
