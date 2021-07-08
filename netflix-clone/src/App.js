@@ -20,6 +20,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DrawerApp from "./shared_components/DrawerApp/DrawerApp.js";
 import Snackbar from "@material-ui/core/Snackbar";
 import SignupScreen1 from "./pages/SignUpScreen/SignupScreen1";
+import SignupScreen2 from "./pages/SignUpScreen/SignupScreen2";
 
 function App() {
   const API_KEY = "f81980ff410e46f422d64ddf3a56dddd";
@@ -120,6 +121,9 @@ function App() {
               </Route>
               <Route path="/signup1">
                 <SignupScreen1 />
+              </Route>
+              <Route path="/signup2">
+                <SignupScreen2 />
               </Route>
             </Switch>
             <VideoModal isTV={isShowVideoTV} isGlobal={true} />

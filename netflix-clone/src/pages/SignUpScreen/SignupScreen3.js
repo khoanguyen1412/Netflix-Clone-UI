@@ -1,11 +1,11 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import "./SignupScreen1.css";
+import "./SignupScreen3.css";
 
-function SignupScreen1() {
+function SignupScreen3() {
   const history = useHistory();
   return (
-    <div className="signupScreen1">
+    <div className="signupScreen3">
       <img src="../assets/images/netflix_logo.png" alt="" className="logo" />
       <form>
         <img src="../assets/images/signin1.jpg"></img>
@@ -23,4 +23,4 @@ function SignupScreen1() {
   );
 }
 
-export default SignupScreen1;
+export default SignupScreen3;
