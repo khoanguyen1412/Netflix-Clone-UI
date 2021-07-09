@@ -137,6 +137,7 @@ function ListEpisodes(props) {
     } else {
       setDisplayEps(listEp1);
     }
+    // eslint-disable-next-line
   }, [season]);
 
   return (

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaPlay } from "react-icons/fa";
-import { AiOutlineCheck } from "react-icons/ai";
 import { BiLike, BiDislike, BiPlus } from "react-icons/bi";
 import { FiChevronDown } from "react-icons/fi";
 import { Row, Col } from "react-bootstrap";

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./GridMovies.scss";
-import { Row, Col } from "react-bootstrap";
-import axios from "../../api/axios.js";
+import { Row } from "react-bootstrap";
 import MovieItem from "../MovieItem/MovieItem.js";
-import MovieComponent from "../MovieComponent/MovieComponent.js";
 import { useSelector } from "react-redux";
 
 function GridMovies({ mode = 1 }) {
@@ -38,6 +36,7 @@ function GridMovies({ mode = 1 }) {
       TVList = [];
     }
     setRefactorTVLists(TVLists);
+    // eslint-disable-next-line
   }, [movies]);
 
   return (

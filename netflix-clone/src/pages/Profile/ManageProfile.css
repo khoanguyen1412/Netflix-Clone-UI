@@ -21,6 +21,12 @@
     border-color: gray;
     border-radius: 5px;
     margin: 30px;
+    padding: 0 1rem;
+    transition: all 0.2s;
+}
+.manageprofile>.profileScreen>button:hover{
+    color:white;
+    
 }
 
 .manageprofile>.profileScreen_logo{

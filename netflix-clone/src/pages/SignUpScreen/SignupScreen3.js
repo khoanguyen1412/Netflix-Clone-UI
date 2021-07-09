@@ -1,13 +1,20 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import "./SignupScreen3.css";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { login } from "../../app/appSlice.js";
+import "./SignupScreen3.scss";
 
 function SignupScreen3() {
   const history = useHistory();
-
+  const dispatch = useDispatch();
   return (
     <div className="signupScreen3">
-      <img src="../assets/images/netflix_logo.png" alt="" className="logo" />
+      <img
+        onClick={() => history.push("/")}
+        src="../assets/images/netflix_logo.png"
+        alt=""
+        className="logo"
+      />
       <form>
         <h6> STEP 3 OF 3</h6>
         <h2>Set up your payment</h2>
@@ -23,7 +30,12 @@ function SignupScreen3() {
           any time in your free trial and will not be charged. To cancel, go
           online to your Account and click on "Cancel Membership"
         </label>
-        <button onClick={() => history.push("/profile")}>
+        <button
+          onClick={() => {
+            dispatch(login());
+            history.push("/profile");
+          }}
+        >
           START MEMBERSHIP
         </button>
       </form>

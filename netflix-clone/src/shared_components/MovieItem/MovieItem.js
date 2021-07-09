@@ -5,14 +5,12 @@ import { FaPlay } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { FiChevronDown } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   setIsShowMovieInfo,
-  setIsShowToast,
   setIsShowVideoTV,
   setShowMovieInfoModal,
   setShowVideoModal,
-  setToastText,
 } from "../../app/appSlice.js";
 import { withStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -44,7 +42,6 @@ function MovieItem({
   const [mark, setMark] = useState(false);
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
-  const isShowToast = useSelector((state) => state.app.isShowToast);
 
   function openMovieInfoModal() {
     if (movie.release_date) {
@@ -59,15 +56,6 @@ function MovieItem({
     setLike(true);
     setDislike(false);
     return;
-    dispatch(setIsShowToast(false));
-    dispatch(
-      setToastText(
-        `You have just liked ${
-          movie.name || movie.title || movie.original_title
-        }!`
-      )
-    );
-    if (!isShowToast) dispatch(setIsShowToast(true));
   }
 
   function handleDislike() {
@@ -75,29 +63,20 @@ function MovieItem({
     setLike(false);
 
     return;
-    dispatch(setIsShowToast(false));
-    dispatch(
-      setToastText(
-        `You have just disliked ${
-          movie.name || movie.title || movie.original_title
-        }!`
-      )
-    );
-    if (!isShowToast) dispatch(setIsShowToast(true));
   }
 
   function handleMark() {
     setMark(!mark);
     return;
-    dispatch(setIsShowToast(false));
-    dispatch(
-      setToastText(
-        `You have just marked ${
-          movie.name || movie.title || movie.original_title
-        } as Favorite!`
-      )
-    );
-    if (!isShowToast) dispatch(setIsShowToast(true));
+    // dispatch(setIsShowToast(false));
+    // dispatch(
+    //   setToastText(
+    //     `You have just marked ${
+    //       movie.name || movie.title || movie.original_title
+    //     } as Favorite!`
+    //   )
+    // );
+    // if (!isShowToast) dispatch(setIsShowToast(true));
   }
 
   function openVideo() {

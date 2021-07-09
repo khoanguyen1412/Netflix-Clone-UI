@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import SignInForm from "../../shared_components/SignInForm/SignInForm";
-import SignupScreen from "../SignUpScreen/SignupScreen1";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./LoginScreen.scss";
 
 function LoginScreen(props) {

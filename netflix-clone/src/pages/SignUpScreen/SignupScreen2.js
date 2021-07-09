@@ -1,22 +1,22 @@
-import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-import "./SignupScreen2.css";
+import "./SignupScreen2.scss";
 import MaterialTable from "material-table";
 
 function SignupScreen2() {
   const history = useHistory();
+  const [plan, setPlan] = useState(0);
   return (
     <div className="signupScreen2">
-      <img src="../assets/images/netflix_logo.png" alt="" className="logo" />
+      <img
+        onClick={() => history.push("/")}
+        src="../assets/images/netflix_logo.png"
+        alt=""
+        className="logo"
+      />
       <label>STEP 2 OF 3</label>
       <h2>Choose the plan that's right for you</h2>
-      <div className="buttonContainer">
-        <button onClick={() => history.push("/signup2")}>Premium</button>
-        <button onClick={() => history.push("/signup2")}>Standard</button>
-        <button onClick={() => history.push("/signup2")}>Basic</button>
-        <button onClick={() => history.push("/signup2")}>Mobile</button>
-      </div>
 
       <MaterialTable
         columns={[
@@ -39,6 +39,41 @@ function SignupScreen2() {
           },
         ]}
         data={[
+          {
+            feature: "",
+            mobile: (
+              <button
+                className={`plan-btn ${plan === 0 ? "active" : ""}`}
+                onClick={() => setPlan(0)}
+              >
+                Mobile
+              </button>
+            ),
+            basic: (
+              <button
+                className={`plan-btn ${plan === 1 ? "active" : ""}`}
+                onClick={() => setPlan(1)}
+              >
+                Basic
+              </button>
+            ),
+            standard: (
+              <button
+                className={`plan-btn ${plan === 2 ? "active" : ""}`}
+                onClick={() => setPlan(2)}
+              >
+                Standard
+              </button>
+            ),
+            premium: (
+              <button
+                className={`plan-btn ${plan === 3 ? "active" : ""}`}
+                onClick={() => setPlan(3)}
+              >
+                Premium
+              </button>
+            ),
+          },
           {
             feature: "Monthly price",
             mobile: "70,000đ",

@@ -7,9 +7,12 @@
     form {
         display: flex;
         flex-direction: column;
+        .input-email {
+            margin-top: 1rem;
+        }
         input {
             outline-width: 0;
-            height: 40px;
+            height: 3rem;
             margin-bottom: 14px;
             border-radius: 5px;
             border: none;
@@ -38,5 +41,8 @@
                 }
             }
         }
+    }
+    @media (max-width: 480px) {
+        padding: 30px;
     }
 }

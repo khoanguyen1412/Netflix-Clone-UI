@@ -1,13 +1,13 @@
 import React from "react";
-import { Dropdown } from "react-bootstrap";
-import { useHistory, useLocation } from "react-router-dom";
-import "./ProfileDetail.css";
+import { useHistory } from "react-router-dom";
+import "./ProfileDetail.scss";
 
 function ProfileDetail() {
   const history = useHistory();
   return (
     <div className="profileScreen">
       <img
+        onClick={() => history.push("/")}
         src="../assets/images/netflix_logo.png"
         alt=""
         className="profileScreen_logo"
@@ -21,11 +21,11 @@ function ProfileDetail() {
             <div className="profileScreen_plans">
               <label>Autoplay controls</label>
               <div className="option">
-                <input type="checkbox" />
+                <input type="checkbox" className="input-checkbox" />
                 <label> Autoplay next episode </label>
               </div>
               <div className="option2">
-                <input type="checkbox" />
+                <input type="checkbox" className="input-checkbox" />
                 <label> Autoplay previews </label>
               </div>
               <div className="buttonContainer">

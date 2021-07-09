@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import "./Banner.scss";
 import axios from "../../api/axios";
 import requests from "../../api/Requests";
@@ -11,12 +10,11 @@ import {
   setShowMovieInfoModal,
   setShowVideoModal,
 } from "../../app/appSlice.js";
-import { useHistory } from "react-router-dom";
 
 function Banner(props) {
+  // eslint-disable-next-line
   const [bannerMovie, setBannerMovie] = useState({});
   const dispatch = useDispatch();
-  const history = useHistory();
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.fetchNetflixOriginals);
@@ -31,16 +29,8 @@ function Banner(props) {
     fetchData();
   }, []);
 
-  function truncate(str, n) {
-    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
-  }
-
   function handleOpenVideo() {
     dispatch(setShowVideoModal(true));
-  }
-
-  function openMyList() {
-    history.push("/mylist");
   }
 
   function openMovieInfoModal() {

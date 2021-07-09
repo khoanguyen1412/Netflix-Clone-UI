@@ -1,13 +1,6 @@
-import React, { useRef, useState } from "react";
-import PropTypes from "prop-types";
-
+import React, { useRef } from "react";
 import { Modal } from "react-bootstrap";
-import { Button, Row, Col } from "react-bootstrap";
-import YouTube from "react-youtube";
-import ReactPlayer from "react-player";
 import "./VideoModal.scss";
-import screenfull from "screenfull";
-import YouTubePlayer from "react-player/youtube";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowVideoModal } from "../../app/appSlice.js";
 import ListEpisodes from "../ListEpisodes/ListEpisodes.js";
@@ -21,13 +14,7 @@ function VideoModal({
   const dispatch = useDispatch();
   const showGlobal = useSelector((state) => state.app.showVideoModal);
   console.log(isTV);
-  const opts = {
-    playerVars: {
-      autoplay: 1,
-      showinfo: 0,
-      rel: 0,
-    },
-  };
+
   function handleClose() {
     if (isGlobal) {
       dispatch(setShowVideoModal(false));

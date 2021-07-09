@@ -8,13 +8,12 @@ import { BiLogOut, BiExit } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 
 import { AiFillCaretDown, AiOutlineLock } from "react-icons/ai";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router-dom";
 
 function NavBar(props) {
   const [showNavbar, setShowNavbar] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
-  const [showNoti, setShowNoti] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
@@ -81,6 +80,7 @@ function NavBar(props) {
     }
     setUnreadMes(countUnread);
     console.log(countUnread);
+    // eslint-disable-next-line
   }, []);
 
   function clickNoti(index) {
@@ -107,7 +107,7 @@ function NavBar(props) {
   }
 
   function logoutApp() {
-    dispatch(logout(false));
+    dispatch(logout(history));
   }
 
   const transitionNavbar = () => {
@@ -378,7 +378,10 @@ function NavBar(props) {
                 <AiOutlineLock className="icon-lock" />
               </Dropdown.Item>
               <Dropdown.Divider />
-              <Dropdown.Item className="action-item" onClick={logoutApp}>
+              <Dropdown.Item
+                className="action-item"
+                onClick={() => history.push("/manageprofile")}
+              >
                 <FiUser className="icon-action icon-profile" />
                 Manage Profile
               </Dropdown.Item>

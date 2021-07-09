@@ -1,35 +1,13 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import "./RowSlider.scss";
 import Carousel from "react-bootstrap/Carousel";
 import axios from "../../api/axios";
 import Row from "react-bootstrap/Row";
-import { useDispatch } from "react-redux";
-import { setShowMovieInfoModal } from "../../app/appSlice.js";
 import MovieItem from "../MovieItem/MovieItem.js";
 
 const API_KEY = "f81980ff410e46f422d64ddf3a56dddd";
 RowSlider.propTypes = {};
-const data = [
-  {
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/4/4e/Loki_%28TV_series%29_logo.png",
-    caption: "Caption",
-    description: "Description Here",
-  },
-  {
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/4/4e/Loki_%28TV_series%29_logo.png",
-    caption: "Caption",
-    description: "Description Here",
-  },
-  {
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/4/4e/Loki_%28TV_series%29_logo.png",
-    caption: "Caption",
-    description: "Description Here",
-  },
-];
+
 function RowSlider({
   title,
   fetchUrl,
@@ -40,13 +18,9 @@ function RowSlider({
   bottomRow = false,
 }) {
   const [index, setIndex] = useState(0);
+  // eslint-disable-next-line
   const [movies, setMovies] = useState([]);
-  const base_url = "https://image.tmdb.org/t/p/original/";
   const [sliderData, setSliderData] = useState([]);
-  const dispatch = useDispatch();
-  function openMovieInfoModal() {
-    dispatch(setShowMovieInfoModal(true));
-  }
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -89,6 +63,7 @@ function RowSlider({
     }
 
     fetchData();
+    // eslint-disable-next-line
   }, [fetchUrl]);
 
   return (

@@ -3,9 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 export const appSlice = createSlice({
   name: "app",
   initialState: {
-    user: {
-      name: "khoa",
-    },
+    // user: {
+    //   name: "khoa",
+    // },
+    user: null,
     showMovieInfoModal: false,
     showVideoModal: false,
     isShowVideoTV: false, //the showing video is movie or tv?
@@ -41,8 +42,9 @@ export const appSlice = createSlice({
         name: "khoa",
       };
     },
-    logout: (state) => {
+    logout: (state, payload) => {
       state.user = null;
+      payload.payload.push("/login");
     },
     setIsShowMovieInfo: (state, payload) => {
       state.isShowMovieInfo = payload.payload;

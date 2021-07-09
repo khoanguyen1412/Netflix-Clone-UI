@@ -4,8 +4,9 @@
     background-color: #fff;
 }
 .signupScreen1>.logo{
+    cursor: pointer;
     left: 0;
-    width: 10%;
+    width: 15%;
     padding-left: 15px;
     max-width: 150px;
 }

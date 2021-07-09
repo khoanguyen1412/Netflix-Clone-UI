@@ -1,0 +1,103 @@
+.profileScreen {
+    height: 100vh;
+    color: white;
+}
+.profileScreen_body {
+    display: flex;
+    flex-direction: column;
+    //width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    padding: 1rem;
+    @media (max-width: 500px) {
+        padding: 0.5rem;
+    }
+}
+.profileScreen_body > h2 {
+    font-size: 60px;
+    font-weight: 400;
+    border-bottom: 1px solid #2b2c2d;
+    margin-bottom: 20px;
+    display: flex;
+    @media (max-width: 590px) {
+        font-size: 40px;
+    }
+}
+.profileScreen_info {
+    display: flex;
+    flex-wrap: wrap;
+}
+.profileScreen_details {
+    color: white;
+    width: fit-content;
+    margin-top: 1rem;
+    flex-grow: 1;
+    //flex: 1;
+}
+.profileScreen_details {
+    h2 {
+        background-color: gray;
+        padding: 15px;
+        font-size: 15px;
+        padding-left: 20px;
+        //width: 500px;
+        @media (max-width: 700px) {
+            //width: 400px;
+        }
+        @media (max-width: 450px) {
+            //width: 100%;
+        }
+    }
+}
+.profileScreen_info > img {
+    height: 100px;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+.profileScreen_plans > Dropdown {
+    border-bottom: 1px solid #282c2d;
+    padding-bottom: 10px;
+}
+.profileScreen_signout {
+    padding: 10px 20px;
+    font-size: 1rem;
+    width: 100%;
+    color: white;
+    background-color: #e50914;
+    cursor: pointer;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+.profileScreen_cancel {
+    padding: 10px 20px;
+    font-size: 1rem;
+    width: 100%;
+    color: gray;
+    background-color: white;
+    cursor: pointer;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    border-color: gray;
+}
+.profileScreen_logo {
+    left: 0;
+    min-width: 130px;
+    max-width: 15%;
+    object-fit: contain;
+    padding-left: 20px;
+    cursor: pointer;
+}
+.option2 {
+    border-bottom: 1px solid #282c2d;
+    padding-bottom: 10px;
+}
+.buttonContainer {
+    display: flex;
+}
+
+.input-checkbox {
+    margin-right: 0.5rem;
+}

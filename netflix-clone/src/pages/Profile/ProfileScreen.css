@@ -1,6 +1,12 @@
 .profile{
 
 }
+.profileimage{
+    cursor: pointer;
+}
+.profileimage:hover{
+    border: 1px solid white;
+}
 .profile>.profileScreen {
     height: 100vh;
     display: flex;
@@ -21,6 +27,11 @@
     border-color: gray;
     border-radius: 5px;
     margin: 30px;
+    padding: 0 1rem;
+    transition: all 0.2s;
+}
+.profile>.profileScreen>button:hover{
+    color:white;
 }
 
 .profile>.profileScreen_logo{

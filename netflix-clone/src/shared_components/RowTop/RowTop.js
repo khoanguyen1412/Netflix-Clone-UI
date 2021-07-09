@@ -6,7 +6,6 @@ import requests from "../../api/Requests.js";
 import MovieTopItem from "../MovieTopItem/MovieTopItem.js";
 
 function RowTop(props) {
-  const API_KEY = "f81980ff410e46f422d64ddf3a56dddd";
   const [top10, setTop10] = useState();
   useEffect(() => {
     async function fetchData() {

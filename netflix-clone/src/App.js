@@ -1,9 +1,8 @@
 import "./App.scss";
 import React from "react";
-import MainScreen from "./pages/MainScreen/MainScreen";
 import LoginScreen from "./pages/LoginScreen/LoginScreen";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MovieInfoModal from "./shared_components/MovieInfoModal/MovieInfoModal.js";
 import HomePage from "./pages/MainScreen/Components/HomePage/HomePage.js";
@@ -92,6 +91,7 @@ function App() {
     //data for grid view
     fetchDataMovies();
     fetchDataTVs();
+    // eslint-disable-next-line
   }, []);
 
   function handleClose() {
@@ -101,51 +101,46 @@ function App() {
   return (
     <div className="app">
       <Router>
-        {user ? (
-          <>
-            <Switch>
-              <Route path="/" exact>
-                <HomePage />
-              </Route>
-              <Route path="/tvshows">
-                <TVShowPage />
-              </Route>
-              <Route path="/movies">
-                <MoviePage />
-              </Route>
-              <Route path="/newpopular">
-                <PopularPage />
-              </Route>
-              <Route path="/mylist">
-                <PopularPage title={"My List"} />
-              </Route>
-              <Route path="/profile">
-                <ProfileScreen />
-              </Route>
-              <Route path="/signup1">
-                <SignupScreen1 />
-              </Route>
-              <Route path="/signup2">
-                <SignupScreen2 />
-              </Route>
-              <Route path="/signup3">
-                <SignupScreen3 />
-              </Route>
-              <Route path="/login">
-                <LoginScreen />
-              </Route>
-              <Route path="/manageprofile">
-                <ManageProfile />
-              </Route>
-              <Route path="/profiledetail">
-                <ProfileDetail />
-              </Route>
-            </Switch>
-            <VideoModal isTV={isShowVideoTV} isGlobal={true} />
-          </>
-        ) : (
-          <LoginScreen />
-        )}
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
+          <Route path="/tvshows">
+            <TVShowPage />
+          </Route>
+          <Route path="/movies">
+            <MoviePage />
+          </Route>
+          <Route path="/newpopular">
+            <PopularPage />
+          </Route>
+          <Route path="/mylist">
+            <PopularPage title={"My List"} />
+          </Route>
+          <Route path="/profile">
+            <ProfileScreen />
+          </Route>
+          <Route path="/signup1">
+            <SignupScreen1 />
+          </Route>
+          <Route path="/signup2">
+            <SignupScreen2 />
+          </Route>
+          <Route path="/signup3">
+            <SignupScreen3 />
+          </Route>
+          <Route path="/login">
+            <LoginScreen />
+          </Route>
+          <Route path="/manageprofile">
+            <ManageProfile />
+          </Route>
+          <Route path="/profiledetail">
+            <ProfileDetail />
+          </Route>
+        </Switch>
+        <VideoModal isTV={isShowVideoTV} isGlobal={true} />
+        <DrawerApp />
       </Router>
       <Snackbar
         anchorOrigin={{
@@ -169,7 +164,7 @@ function App() {
           </React.Fragment>
         }
       />
-      <DrawerApp />
+
       <MovieInfoModal />
     </div>
   );

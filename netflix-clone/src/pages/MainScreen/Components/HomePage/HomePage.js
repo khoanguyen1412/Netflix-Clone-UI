@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomePage.scss";
 import requests from "../../../../api/Requests";
 import RowSlider from "../../../../shared_components/RowSlider/RowSlider.js";
 import NavBar from "../../../../shared_components/NavBar/NavBar";
 import Banner from "../../../../shared_components/Banner/Banner";
-import RowTop from "../../../../shared_components/RowTop/RowTop.js";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 HomePage.propTypes = {};
 
 function HomePage(props) {
+  const user = useSelector((state) => state.app.user);
+  const history = useHistory();
+  useEffect(() => {
+    if (!user) {
+      history.push("/login");
+    }
+  }, []);
   return (
     <div className="homePage">
       <NavBar />

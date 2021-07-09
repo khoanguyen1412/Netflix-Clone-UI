@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import "./DrawerApp.scss";
 import Drawer from "@material-ui/core/Drawer";
 import { FormControl, Dropdown } from "react-bootstrap";
-import { BsFillBellFill } from "react-icons/bs";
-import { FaSearch } from "react-icons/fa";
 import { BiLogOut, BiExit, BiBell } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 
-import { AiFillCaretDown, AiOutlineLock } from "react-icons/ai";
+import { AiOutlineLock } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, setIsShowDrawer } from "../../app/appSlice.js";
+import { useHistory } from "react-router-dom";
+
 function DrawerApp(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const isShow = useSelector((state) => state.app.isShowDrawer);
   const [selectedTab, setSelectedTab] = useState(1); //1: user, 2: noti
   const listNoti = [
@@ -97,7 +98,9 @@ function DrawerApp(props) {
   ];
   function logoutApp() {
     dispatch(logout(false));
+    dispatch(setIsShowDrawer(false));
   }
+
   return (
     <Drawer
       anchor={"right"}
@@ -176,11 +179,23 @@ function DrawerApp(props) {
             <AiOutlineLock className="icon-lock" />
           </div>
           <Dropdown.Divider />
-          <div className="drawer-item action-item">
+          <div
+            className="drawer-item action-item"
+            onClick={() => {
+              history.push("/manageprofile");
+              dispatch(setIsShowDrawer(false));
+            }}
+          >
             <FiUser className="icon-action icon-profile" />
             Manage Profile
           </div>
-          <div className="drawer-item action-item">
+          <div
+            className="drawer-item action-item"
+            onClick={() => {
+              history.push("/profile");
+              dispatch(setIsShowDrawer(false));
+            }}
+          >
             <BiExit className="icon-action icon-exit" />
             Exit Profile
           </div>
